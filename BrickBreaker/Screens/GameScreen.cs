@@ -17,6 +17,7 @@ namespace BrickBreaker
 {
     public partial class GameScreen : UserControl
     {
+
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
