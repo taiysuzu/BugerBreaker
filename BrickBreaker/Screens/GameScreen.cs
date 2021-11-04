@@ -105,7 +105,7 @@ namespace BrickBreaker
                     rightArrowDown = true;
                     break;
                 default:
-                    break;
+                    break;4
             }
         }
 
