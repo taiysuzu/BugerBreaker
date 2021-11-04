@@ -153,9 +153,19 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Resources\Mega Mushroom.png" />
+    <None Include="Resources\Mini Mushroom.png" />
+    <None Include="Resources\Poison Mushroom.png" />
+    <None Include="Resources\Super Leaf.png" />
+    <None Include="Resources\Spring Mushroom.png" />
+    <None Include="Resources\Coin.png" />
+    <None Include="Resources\Cloud Flower.png" />
+    <None Include="Resources\Double Cherry.png" />
+    <None Include="Resources\1-UpMushroom.png" />
     <Content Include="Resources\highscores.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Ice Flower.png" />
     <Content Include="Resources\level3.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -165,6 +175,8 @@
     <Content Include="Resources\level1.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Propeller Mushroom.png" />
+    <None Include="Resources\Super Mushroom.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
