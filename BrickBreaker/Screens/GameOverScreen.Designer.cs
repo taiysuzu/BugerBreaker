@@ -35,6 +35,8 @@ namespace BrickBreaker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "GameOverScreen";
             this.Size = new System.Drawing.Size(854, 542);
             this.ResumeLayout(false);
