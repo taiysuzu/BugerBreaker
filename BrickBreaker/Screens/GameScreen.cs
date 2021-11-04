@@ -1,4 +1,4 @@
-﻿/*  Created by: 
+﻿/*  Created by: Team 3 - Taiyo, Charlie, Manny, Miguel, Matthew, Isaac
  *  Project: Brick Breaker
  *  Date: 
  */ 
@@ -24,6 +24,7 @@ namespace BrickBreaker
 
         // Game values
         int lives;
+        int score;
 
         // Paddle and Ball objects
         Paddle paddle;
@@ -35,7 +36,11 @@ namespace BrickBreaker
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
         SolidBrush ballBrush = new SolidBrush(Color.White);
+        SolidBrush textBrush = new SolidBrush(Color.White);
         SolidBrush blockBrush = new SolidBrush(Color.Red);
+
+        //font for text
+        Font textFont = new Font("Arial", 16);
 
         #endregion
 
@@ -82,7 +87,7 @@ namespace BrickBreaker
             while (blocks.Count < 12)
             {
                 x += 57;
-                Block b1 = new Block(x, 10, 1, Color.White);
+                Block b1 = new Block(x, 10, 1, Color.White, 1);
                 blocks.Add(b1);
             }
 
@@ -186,11 +191,11 @@ namespace BrickBreaker
         {
             // Goes to the game over screen
             Form form = this.FindForm();
-            MenuScreen ps = new MenuScreen();
-            
-            ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
+            GameOverScreen gos = new GameOverScreen();
 
-            form.Controls.Add(ps);
+            gos.Location = new Point((form.Width - gos.Width) / 2, (form.Height - gos.Height) / 2);
+
+            form.Controls.Add(gos);
             form.Controls.Remove(this);
         }
 
@@ -208,6 +213,8 @@ namespace BrickBreaker
 
             // Draws ball
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
+
+            e.Graphics.DrawString($"Lives left: {lives}", textFont, textBrush, 370, 500);
         }
     }
 }
