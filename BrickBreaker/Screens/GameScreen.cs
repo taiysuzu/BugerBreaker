@@ -1,4 +1,4 @@
-﻿/*  Created by: 
+﻿/*  Created by: Team 3
  *  Project: Brick Breaker
  *  Date: 
  */ 
