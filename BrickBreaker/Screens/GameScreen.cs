@@ -1,4 +1,4 @@
-﻿/*  Created by: Team 3
+﻿/*  Created by: Team 3 - Taiyo, Charlie, Manny, Miguel, Matthew, Isaac
  *  Project: Brick Breaker
  *  Date: 
  */ 
