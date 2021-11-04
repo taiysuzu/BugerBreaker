@@ -83,7 +83,7 @@ namespace BrickBreaker
             while (blocks.Count < 12)
             {
                 x += 57;
-                Block b1 = new Block(x, 10, 1, Color.White);
+                Block b1 = new Block(x, 10, 1, Color.White, 1);
                 blocks.Add(b1);
             }
 
