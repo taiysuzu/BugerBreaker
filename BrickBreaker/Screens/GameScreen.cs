@@ -1,7 +1,7 @@
-﻿/*  Created by: 
+﻿/*  Created by: Team 3 - Taiyo, Charlie, Manny, Miguel, Matthew, Isaac
  *  Project: Brick Breaker
  *  Date: 
- */ 
+ */
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using System.Xml;
 
 namespace BrickBreaker
 {
@@ -24,6 +25,7 @@ namespace BrickBreaker
 
         // Game values
         int lives;
+        int score;
 
         // Paddle and Ball objects
         Paddle paddle;
@@ -35,7 +37,11 @@ namespace BrickBreaker
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
         SolidBrush ballBrush = new SolidBrush(Color.White);
+        SolidBrush textBrush = new SolidBrush(Color.White);
         SolidBrush blockBrush = new SolidBrush(Color.Red);
+
+        //font for text
+        Font textFont = new Font("Arial", 16);
 
         #endregion
 
@@ -73,17 +79,37 @@ namespace BrickBreaker
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
             #region Creates blocks for generic level. Need to replace with code that loads levels.
-            
-            //TODO - replace all the code in this region eventually with code that loads levels from xml files
-            
-            blocks.Clear();
-            int x = 10;
 
-            while (blocks.Count < 12)
+            //TODO - replace all the code in this region eventually with code that loads levels from xml files
+
+            blocks.Clear();
+
+            int newX, newY, newHp, newColour, newType;
+
+            XmlReader reader = XmlReader.Create("Resources/level1.xml");
+
+            while (reader.Read())
             {
-                x += 57;
-                Block b1 = new Block(x, 10, 1, Color.White);
-                blocks.Add(b1);
+                if (reader.NodeType == XmlNodeType.Text)
+                {
+                    reader.ReadToNextSibling("x");
+                    newX = Convert.ToInt32(reader.ReadString());
+
+                    reader.ReadToNextSibling("y");
+                    newY = Convert.ToInt32(reader.ReadString());
+
+                    reader.ReadToNextSibling("hp");
+                    newHp = Convert.ToInt32(reader.ReadString());
+
+                    reader.ReadToNextSibling("colour");
+                    newColour = Convert.ToInt32(reader.ReadString());
+
+                    reader.ReadToNextSibling("type");
+                    newType = Convert.ToInt32(reader.ReadString());
+
+                    Block s = new Block(newX, newY, newHp, newColour, newType);
+                    blocks.Add(s);
+                }
             }
 
             #endregion
@@ -186,11 +212,11 @@ namespace BrickBreaker
         {
             // Goes to the game over screen
             Form form = this.FindForm();
-            MenuScreen ps = new MenuScreen();
             
-            ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
+            GameOverScreen gos = new GameOverScreen();
+            gos.Location = new Point((form.Width - gos.Width) / 2, (form.Height - gos.Height) / 2);
 
-            form.Controls.Add(ps);
+            form.Controls.Add(gos);
             form.Controls.Remove(this);
         }
 
@@ -208,6 +234,8 @@ namespace BrickBreaker
 
             // Draws ball
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
+
+            e.Graphics.DrawString($"Lives left: {lives}", textFont, textBrush, 370, 500);
         }
     }
 }
