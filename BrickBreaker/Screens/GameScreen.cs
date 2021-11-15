@@ -231,6 +231,11 @@ namespace BrickBreaker
 
         }
 
+        private void label36_Click(object sender, EventArgs e)
+        {
+
+        }
+
         public void GameScreen_Paint(object sender, PaintEventArgs e)
         {
             // Draws paddle

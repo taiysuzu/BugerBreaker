@@ -84,6 +84,7 @@ namespace BrickBreaker
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "GameOverScreen";
             this.Size = new System.Drawing.Size(854, 542);
+            this.Load += new System.EventHandler(this.GameOverScreen_Load);
             this.ResumeLayout(false);
 
         }
