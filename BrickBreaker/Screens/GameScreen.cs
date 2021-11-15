@@ -84,6 +84,7 @@ namespace BrickBreaker
 
             blocks.Clear();
 
+            
             int newX, newY, newHp, newColour, newType;
 
             XmlReader reader = XmlReader.Create("Resources/level1.xml");
