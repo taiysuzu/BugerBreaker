@@ -11,6 +11,9 @@ namespace BrickBreaker
     {
         public int x, y, size, speed, type;
         public Color color;
+        public static Random randGen = new Random();
+       
+
 
         //powerup types as follows: 1 - fire flower, 2 - super star, 3 - cherry, 4 - super mushroom, 5 - mini mushrooms
 
@@ -23,5 +26,7 @@ namespace BrickBreaker
             color = _color;
             type = _type;
         }
-    }
-}
+       
+    } 
+  }
+

@@ -33,6 +33,7 @@ namespace BrickBreaker
 
         // list of all blocks for current level
         List<Block> blocks = new List<Block>();
+        string[] powerUps = new string[5];
 
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
@@ -46,6 +47,8 @@ namespace BrickBreaker
         //font for text
         Font textFont = new Font("Arial", 16);
 
+        public static Random randGen = new Random();
+        public static string powerImage;
         #endregion
 
         public GameScreen()
@@ -57,6 +60,7 @@ namespace BrickBreaker
 
         public void OnStart()
         {
+            string[] powerUps = { "BrickBreaker.Properties.Resources.Fire_flower", "BrickBreaker.Properties.Resources.Super_Star", "BrickBreaker.Properties.Resources.Double_Cherry", "BrickBreaker.Properties.Resources.Super_Mushroom", "BrickBreaker.Properties.Resources.Mini_Mushroom" };
             //set life counter
             lives = 3;
 
@@ -248,6 +252,13 @@ namespace BrickBreaker
             // Draws blocks
             foreach (Block b in blocks)
             {
+                //e.Graphics.DrawImage(powerImage[0], 20, 20);
+                //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Fire_flower, 20, 20);
+                //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Super_Star, 20, 20);
+                //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Double_Cherry, 20, 20);
+                //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Super_Mushroom, 20, 20);
+                //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Mini_Mushroom, 20, 20);
+                
                 if (b.colour == 1)
                 {
                     e.Graphics.FillRectangle(blockBrush, b.x, b.y, b.width, b.height);
@@ -264,6 +275,7 @@ namespace BrickBreaker
                 {
                     e.Graphics.FillRectangle(blockBrush4, b.x, b.y, b.width, b.height);
                 }
+                
             }
 
             // Draws ball
@@ -271,5 +283,7 @@ namespace BrickBreaker
 
             e.Graphics.DrawString($"Lives left: {lives}", textFont, textBrush, 370, 500);
         }
+       
+
     }
 }
