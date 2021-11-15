@@ -1,7 +1,7 @@
 ﻿/*  Created by: Team 3 - Taiyo, Charlie, Manny, Miguel, Matthew, Isaac
  *  Project: Brick Breaker
  *  Date: 
- */ 
+ */
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using System.Xml;
 
 namespace BrickBreaker
 {
@@ -78,17 +79,37 @@ namespace BrickBreaker
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
             #region Creates blocks for generic level. Need to replace with code that loads levels.
-            
-            //TODO - replace all the code in this region eventually with code that loads levels from xml files
-            
-            blocks.Clear();
-            int x = 10;
 
-            while (blocks.Count < 12)
+            //TODO - replace all the code in this region eventually with code that loads levels from xml files
+
+            blocks.Clear();
+
+            int newX, newY, newHp, newColour, newType;
+
+            XmlReader reader = XmlReader.Create("Resources/level1.xml");
+
+            while (reader.Read())
             {
-                x += 57;
-                Block b1 = new Block(x, 10, 1, Color.White, 1);
-                blocks.Add(b1);
+                if (reader.NodeType == XmlNodeType.Text)
+                {
+                    //reader.ReadToFollowing("x");
+                    newX = Convert.ToInt32(reader.ReadString());
+
+                    reader.ReadToNextSibling("y");
+                    newY = Convert.ToInt32(reader.ReadString());
+
+                    reader.ReadToNextSibling("hp");
+                    newHp = Convert.ToInt32(reader.ReadString());
+
+                    reader.ReadToNextSibling("colour");
+                    newColour = Convert.ToInt32(reader.ReadString());
+
+                    reader.ReadToNextSibling("type");
+                    newType = Convert.ToInt32(reader.ReadString());
+
+                    Block s = new Block(newX, newY, newHp, newColour, newType);
+                    blocks.Add(s);
+                }
             }
 
             #endregion
@@ -191,8 +212,8 @@ namespace BrickBreaker
         {
             // Goes to the game over screen
             Form form = this.FindForm();
+            
             GameOverScreen gos = new GameOverScreen();
-
             gos.Location = new Point((form.Width - gos.Width) / 2, (form.Height - gos.Height) / 2);
 
             form.Controls.Add(gos);
