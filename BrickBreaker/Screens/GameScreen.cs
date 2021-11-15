@@ -90,7 +90,7 @@ namespace BrickBreaker
             
             int newX, newY, newHp, newColour, newType;
 
-            XmlReader reader = XmlReader.Create("Resources/level1.xml");
+            XmlReader reader = XmlReader.Create("Resources/level2.xml");
 
             while (reader.Read())
             {
@@ -115,7 +115,7 @@ namespace BrickBreaker
                     blocks.Add(s);
                 }
             }
-
+            
             #endregion
 
             // start the game engine loop
@@ -196,8 +196,18 @@ namespace BrickBreaker
             {
                 if (ball.BlockCollision(b))
                 {
-                    b.colour--;
-
+                    if (b.colour == 4)
+                    {
+                        b.colour -= 4;
+                    }
+                    else if (b.colour == 6)
+                    {
+                        b.colour -= 6;
+                    }
+                    else
+                    {
+                        b.colour--;
+                    }
                     if (b.colour == 0)
                     {
                         blocks.Remove(b);
