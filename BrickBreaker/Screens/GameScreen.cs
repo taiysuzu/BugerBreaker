@@ -93,7 +93,7 @@ namespace BrickBreaker
             {
                 if (reader.NodeType == XmlNodeType.Text)
                 {
-                    reader.ReadToNextSibling("x");
+                    //reader.ReadToFollowing("x");
                     newX = Convert.ToInt32(reader.ReadString());
 
                     reader.ReadToNextSibling("y");
