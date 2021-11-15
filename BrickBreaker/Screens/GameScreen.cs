@@ -39,6 +39,9 @@ namespace BrickBreaker
         SolidBrush ballBrush = new SolidBrush(Color.White);
         SolidBrush textBrush = new SolidBrush(Color.White);
         SolidBrush blockBrush = new SolidBrush(Color.Red);
+        SolidBrush blockBrush2 = new SolidBrush(Color.Yellow);
+        SolidBrush blockBrush3 = new SolidBrush(Color.Green);
+        SolidBrush blockBrush4 = new SolidBrush(Color.Blue);
 
         //font for text
         Font textFont = new Font("Arial", 16);
@@ -193,7 +196,12 @@ namespace BrickBreaker
             {
                 if (ball.BlockCollision(b))
                 {
-                    blocks.Remove(b);
+                    b.colour--;
+
+                    if (b.colour == 0)
+                    {
+                        blocks.Remove(b);
+                    }
 
                     if (blocks.Count == 0)
                     {
@@ -230,7 +238,22 @@ namespace BrickBreaker
             // Draws blocks
             foreach (Block b in blocks)
             {
-                e.Graphics.FillRectangle(blockBrush, b.x, b.y, b.width, b.height);
+                if (b.colour == 1)
+                {
+                    e.Graphics.FillRectangle(blockBrush, b.x, b.y, b.width, b.height);
+                }
+                if (b.colour == 2)
+                {
+                    e.Graphics.FillRectangle(blockBrush2, b.x, b.y, b.width, b.height);
+                }
+                if (b.colour == 3)
+                {
+                    e.Graphics.FillRectangle(blockBrush3, b.x, b.y, b.width, b.height);
+                }
+                if (b.colour == 4)
+                {
+                    e.Graphics.FillRectangle(blockBrush4, b.x, b.y, b.width, b.height);
+                }
             }
 
             // Draws ball
