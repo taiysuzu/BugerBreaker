@@ -124,7 +124,7 @@
     <y>190</y>
     <hp>1</hp>
     <colour>4</colour>
-    <type>0</type>
+    <type>6</type>
   </brick>
   <brick>
     <x>554</x>
@@ -143,105 +143,105 @@
   <brick>
     <x>274</x>
     <y>160</y>
-    <hp>1</hp>
+    <hp>2</hp>
     <colour>2</colour>
     <type>1</type>
   </brick>
   <brick>
     <x>330</x>
     <y>190</y>
-    <hp>1</hp>
+    <hp>2</hp>
     <colour>2</colour>
     <type>1</type>
   </brick>
   <brick>
     <x>330</x>
     <y>130</y>
-    <hp>1</hp>
+    <hp>2</hp>
     <colour>2</colour>
     <type>1</type>
   </brick>
   <brick>
     <x>386</x>
     <y>160</y>
-    <hp>1</hp>
+    <hp>2</hp>
     <colour>2</colour>
     <type>1</type>
   </brick>
   <brick>
     <x>442</x>
     <y>130</y>
-    <hp>1</hp>
+    <hp>2</hp>
     <colour>2</colour>
     <type>1</type>
   </brick>
   <brick>
     <x>442</x>
     <y>190</y>
-    <hp>1</hp>
+    <hp>2</hp>
     <colour>2</colour>
     <type>1</type>
   </brick>
   <brick>
     <x>498</x>
     <y>160</y>
-    <hp>1</hp>
+    <hp>2</hp>
     <colour>2</colour>
     <type>1</type>
   </brick>
   <brick>
     <x>274</x>
     <y>130</y>
-    <hp>1</hp>
+    <hp>3</hp>
     <colour>3</colour>
     <type>1</type>
   </brick>
   <brick>
     <x>274</x>
     <y>190</y>
-    <hp>1</hp>
+    <hp>3</hp>
     <colour>3</colour>
     <type>1</type>
   </brick>
   <brick>
     <x>330</x>
     <y>160</y>
-    <hp>1</hp>
+    <hp>3</hp>
     <colour>3</colour>
     <type>1</type>
   </brick>
   <brick>
     <x>386</x>
     <y>190</y>
-    <hp>1</hp>
+    <hp>3</hp>
     <colour>3</colour>
     <type>1</type>
   </brick>
   <brick>
     <x>386</x>
     <y>130</y>
-    <hp>1</hp>
+    <hp>3</hp>
     <colour>3</colour>
     <type>1</type>
   </brick>
   <brick>
     <x>442</x>
     <y>160</y>
-    <hp>1</hp>
+    <hp>3</hp>
     <colour>3</colour>
     <type>1</type>
   </brick>
   <brick>
     <x>498</x>
     <y>190</y>
-    <hp>1</hp>
+    <hp>3</hp>
     <colour>3</colour>
     <type>1</type>
   </brick>
   <brick>
     <x>498</x>
     <y>130</y>
-    <hp>1</hp>
+    <hp>3</hp>
     <colour>3</colour>
     <type>1</type>
   </brick>

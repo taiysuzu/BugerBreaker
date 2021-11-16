@@ -87,7 +87,7 @@ namespace BrickBreaker
 
             #region Creates blocks for generic level. Need to replace with code that loads levels.
 
-            //TODO - replace all the code in this region eventually with code that loads levels from xml files
+            //clears screen and loads level 1
 
             blocks.Clear();
 
@@ -200,19 +200,11 @@ namespace BrickBreaker
             {
                 if (ball.BlockCollision(b))
                 {
-                    if (b.colour == 4)
-                    {
-                        b.colour -= 4;
-                    }
-                    else if (b.colour == 6)
-                    {
-                        b.colour -= 6;
-                    }
-                    else
-                    {
-                        b.colour--;
-                    }
-                    if (b.colour == 0)
+                    b.hp--;
+
+                    b.colour = b.hp;
+
+                    if (b.hp == 0)
                     {
                         blocks.Remove(b);
                     }
