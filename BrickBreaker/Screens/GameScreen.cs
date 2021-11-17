@@ -39,6 +39,7 @@ namespace BrickBreaker
         SolidBrush paddleBrush = new SolidBrush(Color.White);
         SolidBrush ballBrush = new SolidBrush(Color.White);
         SolidBrush textBrush = new SolidBrush(Color.White);
+        SolidBrush blockBrush0 = new SolidBrush(Color.White);
         SolidBrush blockBrush = new SolidBrush(Color.Red);
         SolidBrush blockBrush2 = new SolidBrush(Color.Yellow);
         SolidBrush blockBrush3 = new SolidBrush(Color.Green);
@@ -48,7 +49,8 @@ namespace BrickBreaker
         Font textFont = new Font("Arial", 16);
 
         public static Random randGen = new Random();
-        public static string powerImage;
+        //public static string powerImage;
+        //string powerUpPictureGameScreen = PowerUp.powerUpPicture;
         #endregion
 
         public GameScreen()
@@ -60,7 +62,7 @@ namespace BrickBreaker
 
         public void OnStart()
         {
-            string[] powerUps = { "BrickBreaker.Properties.Resources.Fire_flower", "BrickBreaker.Properties.Resources.Super_Star", "BrickBreaker.Properties.Resources.Double_Cherry", "BrickBreaker.Properties.Resources.Super_Mushroom", "BrickBreaker.Properties.Resources.Mini_Mushroom" };
+            //string[] powerUps = { "BrickBreaker.Properties.Resources.Fire_flower", "BrickBreaker.Properties.Resources.Super_Star", "BrickBreaker.Properties.Resources.Double_Cherry", "BrickBreaker.Properties.Resources.Super_Mushroom", "BrickBreaker.Properties.Resources.Mini_Mushroom" };
             //set life counter
             lives = 3;
 
@@ -198,8 +200,9 @@ namespace BrickBreaker
             // Check if ball has collided with any blocks
             foreach (Block b in blocks)
             {
+                
                 if (ball.BlockCollision(b))
-                {
+                {                   
                     if (b.colour == 4)
                     {
                         b.colour -= 4;
@@ -251,14 +254,11 @@ namespace BrickBreaker
 
             // Draws blocks
             foreach (Block b in blocks)
-            {
-                //e.Graphics.DrawImage(powerImage[0], 20, 20);
-                //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Fire_flower, 20, 20);
-                //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Super_Star, 20, 20);
-                //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Double_Cherry, 20, 20);
-                //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Super_Mushroom, 20, 20);
-                //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Mini_Mushroom, 20, 20);
-                
+            {   
+                if(b.colour == 0)
+                {
+                    e.Graphics.FillRectangle(blockBrush0, b.x, b.y, b.width, b.height);
+                }
                 if (b.colour == 1)
                 {
                     e.Graphics.FillRectangle(blockBrush, b.x, b.y, b.width, b.height);
@@ -282,8 +282,14 @@ namespace BrickBreaker
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
 
             e.Graphics.DrawString($"Lives left: {lives}", textFont, textBrush, 370, 500);
+
+            //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Fire_flower, 20, 20);
+            //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Super_Star, 20, 20);
+            //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Double_Cherry, 20, 20);
+            //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Super_Mushroom, 20, 20);
+            //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Mini_Mushroom, 20, 20);
         }
-       
+
 
     }
 }
