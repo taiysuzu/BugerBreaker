@@ -87,11 +87,11 @@ namespace BrickBreaker
 
             #region Creates blocks for generic level. Need to replace with code that loads levels.
 
-            //TODO - replace all the code in this region eventually with code that loads levels from xml files
+            //clears screen and loads level 1
 
             blocks.Clear();
 
-            
+
             int newX, newY, newHp, newColour, newType;
 
             XmlReader reader = XmlReader.Create("Resources/level2.xml");
@@ -119,7 +119,7 @@ namespace BrickBreaker
                     blocks.Add(s);
                 }
             }
-            
+
             #endregion
 
             // start the game engine loop
@@ -200,19 +200,16 @@ namespace BrickBreaker
             {
                 if (ball.BlockCollision(b))
                 {
-                    if (b.colour == 4)
+                    b.hp--;
+
+                    b.colour = b.hp;
+
+                    if (b.type == 0)
                     {
-                        b.colour -= 4;
+                        SpawnPowerUp();
                     }
-                    else if (b.colour == 6)
-                    {
-                        b.colour -= 6;
-                    }
-                    else
-                    {
-                        b.colour--;
-                    }
-                    if (b.colour == 0)
+
+                    if (b.hp == 0)
                     {
                         blocks.Remove(b);
                     }
@@ -235,7 +232,7 @@ namespace BrickBreaker
         {
             // Goes to the game over screen
             Form form = this.FindForm();
-            
+
             GameOverScreen gos = new GameOverScreen();
             gos.Location = new Point((form.Width - gos.Width) / 2, (form.Height - gos.Height) / 2);
 
@@ -258,7 +255,7 @@ namespace BrickBreaker
                 //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Double_Cherry, 20, 20);
                 //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Super_Mushroom, 20, 20);
                 //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Mini_Mushroom, 20, 20);
-                
+
                 if (b.colour == 1)
                 {
                     e.Graphics.FillRectangle(blockBrush, b.x, b.y, b.width, b.height);
@@ -275,7 +272,7 @@ namespace BrickBreaker
                 {
                     e.Graphics.FillRectangle(blockBrush4, b.x, b.y, b.width, b.height);
                 }
-                
+
             }
 
             // Draws ball
@@ -283,7 +280,10 @@ namespace BrickBreaker
 
             e.Graphics.DrawString($"Lives left: {lives}", textFont, textBrush, 370, 500);
         }
-       
 
+        public void SpawnPowerUp()
+        {
+
+        }
     }
 }
