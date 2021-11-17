@@ -12,21 +12,24 @@ namespace BrickBreaker
         public int x, y, size, speed, type;
         public Color color;
         public static Random randGen = new Random();
-       
+        public static string powerUpPicture;
 
 
         //powerup types as follows: 1 - fire flower, 2 - super star, 3 - cherry, 4 - super mushroom, 5 - mini mushrooms
 
-        public PowerUp(int _x, int _y, int _size, int _speed, Color _color, int _type)
+        public PowerUp(int _x, int _y, int _size, int _speed, int _type)
         {
             x = _x;
             y = _y;
             size = _size;
             speed = _speed;
-            color = _color;
             type = _type;
         }
-       
-    } 
-  }
+        public void PowerUpMove()
+        {           
+            y = y - speed;
+        }
+    }
+}
+  
 

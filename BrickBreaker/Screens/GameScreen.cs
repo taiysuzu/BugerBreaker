@@ -40,6 +40,7 @@ namespace BrickBreaker
         SolidBrush paddleBrush = new SolidBrush(Color.White);
         SolidBrush ballBrush = new SolidBrush(Color.White);
         SolidBrush textBrush = new SolidBrush(Color.White);
+        SolidBrush blockBrush0 = new SolidBrush(Color.White);
         SolidBrush blockBrush = new SolidBrush(Color.Red);
         SolidBrush blockBrush2 = new SolidBrush(Color.Yellow);
         SolidBrush blockBrush3 = new SolidBrush(Color.Green);
@@ -49,7 +50,7 @@ namespace BrickBreaker
         Font textFont = new Font("Arial", 16);
 
         public static Random randGen = new Random();
-        public static string powerImage;
+
         #endregion
 
         public GameScreen()
@@ -62,8 +63,8 @@ namespace BrickBreaker
         public void OnStart()
         {
             //fill image array in order of powerup type
-            Image[] powerUpImages = { BrickBreaker.Properties.Resources.Fire_Flower, BrickBreaker.Properties.Resources.Super_Star, BrickBreaker.Properties.Resources.Double_Cherry, BrickBreaker.Properties.Resources.Super_Mushroom, BrickBreaker.Properties.Resources.Mini_Mushroom};
-            
+            Image[] powerUpImages = { BrickBreaker.Properties.Resources.Fire_Flower, BrickBreaker.Properties.Resources.Super_Star, BrickBreaker.Properties.Resources.Double_Cherry, BrickBreaker.Properties.Resources.Super_Mushroom, BrickBreaker.Properties.Resources.Mini_Mushroom };
+
             //set life counter
             lives = 3;
 
@@ -200,6 +201,7 @@ namespace BrickBreaker
             // Check if ball has collided with any blocks
             foreach (Block b in blocks)
             {
+
                 if (ball.BlockCollision(b))
                 {
                     b.hp--;
@@ -208,7 +210,7 @@ namespace BrickBreaker
 
                     if (b.type == 0)
                     {
-                        SpawnPowerUp();
+                        SpawnPowerUp(b.x, b.y);
                     }
 
                     if (b.hp == 0)
@@ -250,7 +252,7 @@ namespace BrickBreaker
 
             // Draws blocks
             foreach (Block b in blocks)
-            { 
+            {
                 if (b.colour == 1)
                 {
                     e.Graphics.FillRectangle(blockBrush, b.x, b.y, b.width, b.height);
@@ -301,9 +303,13 @@ namespace BrickBreaker
             e.Graphics.DrawString($"Lives left: {lives}", textFont, textBrush, 370, 500);
         }
 
-        public void SpawnPowerUp()
+        public void SpawnPowerUp(int x, int y)
         {
+            int size = 20;
+            int speed = 3;
+            int type = randGen.Next(1, 5);
 
+            PowerUp p = new PowerUp(x, y, size, speed, type);
         }
     }
 }
