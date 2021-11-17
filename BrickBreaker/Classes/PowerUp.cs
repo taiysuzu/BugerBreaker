@@ -25,47 +25,10 @@ namespace BrickBreaker
             speed = _speed;
             type = _type;
         }
-
-        //public void SpawnPowerUp(Block b)
-        //{
-
-        //    int randomPowerUp = randGen.Next(1, 5);
-
-        //    if (randomPowerUp  == 1)
-        //    {               
-        //       powerUpPicture = "BrickBreaker.Properties.Resources.Fire_flower";
-        //        x = b.x;
-        //        y = b.y;
-        //    }
-        //    else if (randomPowerUp == 2)
-        //    {
-        //        powerUpPicture = "BrickBreaker.Properties.Resources.Super_Star";
-        //        x = b.x;
-        //        y = b.y;
-        //    }
-        //    else if (randomPowerUp == 3)
-        //    {
-        //        powerUpPicture = "BrickBreaker.Properties.Resources.Double_Cherry";
-        //        x = b.x;
-        //        y = b.y;
-        //    }
-        //    else if (randomPowerUp == 4)
-        //    {
-        //        powerUpPicture = "BrickBreaker.Properties.Resources.Super_Mushroom";
-        //        x = b.x;
-        //        y = b.y;
-        //    }
-        //    else if (randomPowerUp == 5)
-        //    {
-        //        powerUpPicture = "BrickBreaker.Properties.Resources.Mini_Mushroom";
-        //        x = b.x;
-        //        y = b.y;
-        //    }       
-        //}
-        //public void FireFlowerPowerUp()
-        //{
-
-        //}
+        public void PowerUpMove()
+        {           
+            y = y - speed;
+        }
     }
 }
   

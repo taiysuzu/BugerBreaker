@@ -50,8 +50,7 @@ namespace BrickBreaker
         Font textFont = new Font("Arial", 16);
 
         public static Random randGen = new Random();
-        //public static string powerImage;
-        //string powerUpPictureGameScreen = PowerUp.powerUpPicture;
+
         #endregion
 
         public GameScreen()
@@ -211,7 +210,7 @@ namespace BrickBreaker
 
                     if (b.type == 0)
                     {
-                        SpawnPowerUp();
+                        SpawnPowerUp(b.x, b.y);
                     }
 
                     if (b.hp == 0)
@@ -254,8 +253,6 @@ namespace BrickBreaker
             // Draws blocks
             foreach (Block b in blocks)
             {
-
-
                 if (b.colour == 1)
                 {
                     e.Graphics.FillRectangle(blockBrush, b.x, b.y, b.width, b.height);
@@ -304,17 +301,15 @@ namespace BrickBreaker
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
 
             e.Graphics.DrawString($"Lives left: {lives}", textFont, textBrush, 370, 500);
-
-            //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Fire_flower, 20, 20);
-            //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Super_Star, 20, 20);
-            //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Double_Cherry, 20, 20);
-            //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Super_Mushroom, 20, 20);
-            //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Mini_Mushroom, 20, 20);
         }
 
-        public void SpawnPowerUp()
+        public void SpawnPowerUp(int x, int y)
         {
+            int size = 20;
+            int speed = 3;
+            int type = randGen.Next(1, 5);
 
+            PowerUp p = new PowerUp(x, y, size, speed, type);
         }
     }
 }
