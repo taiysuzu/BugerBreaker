@@ -91,7 +91,7 @@ namespace BrickBreaker
 
             blocks.Clear();
 
-            
+
             int newX, newY, newHp, newColour, newType;
 
             XmlReader reader = XmlReader.Create("Resources/level2.xml");
@@ -119,7 +119,7 @@ namespace BrickBreaker
                     blocks.Add(s);
                 }
             }
-            
+
             #endregion
 
             // start the game engine loop
@@ -204,6 +204,11 @@ namespace BrickBreaker
 
                     b.colour = b.hp;
 
+                    if (b.type == 0)
+                    {
+                        SpawnPowerUp();
+                    }
+
                     if (b.hp == 0)
                     {
                         blocks.Remove(b);
@@ -227,7 +232,7 @@ namespace BrickBreaker
         {
             // Goes to the game over screen
             Form form = this.FindForm();
-            
+
             GameOverScreen gos = new GameOverScreen();
             gos.Location = new Point((form.Width - gos.Width) / 2, (form.Height - gos.Height) / 2);
 
@@ -250,7 +255,7 @@ namespace BrickBreaker
                 //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Double_Cherry, 20, 20);
                 //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Super_Mushroom, 20, 20);
                 //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Mini_Mushroom, 20, 20);
-                
+
                 if (b.colour == 1)
                 {
                     e.Graphics.FillRectangle(blockBrush, b.x, b.y, b.width, b.height);
@@ -267,7 +272,7 @@ namespace BrickBreaker
                 {
                     e.Graphics.FillRectangle(blockBrush4, b.x, b.y, b.width, b.height);
                 }
-                
+
             }
 
             // Draws ball
@@ -275,7 +280,10 @@ namespace BrickBreaker
 
             e.Graphics.DrawString($"Lives left: {lives}", textFont, textBrush, 370, 500);
         }
-       
 
+        public void SpawnPowerUp()
+        {
+
+        }
     }
 }
