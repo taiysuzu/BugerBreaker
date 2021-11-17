@@ -64,8 +64,8 @@ namespace BrickBreaker
         public void OnStart()
         {
             //fill image array in order of powerup type
-            Image[] powerUpImages = { BrickBreaker.Properties.Resources.Fire_Flower, BrickBreaker.Properties.Resources.Super_Star, BrickBreaker.Properties.Resources.Double_Cherry, BrickBreaker.Properties.Resources.Super_Mushroom, BrickBreaker.Properties.Resources.Mini_Mushroom};
-            
+            Image[] powerUpImages = { BrickBreaker.Properties.Resources.Fire_Flower, BrickBreaker.Properties.Resources.Super_Star, BrickBreaker.Properties.Resources.Double_Cherry, BrickBreaker.Properties.Resources.Super_Mushroom, BrickBreaker.Properties.Resources.Mini_Mushroom };
+
             //set life counter
             lives = 3;
 
@@ -202,7 +202,7 @@ namespace BrickBreaker
             // Check if ball has collided with any blocks
             foreach (Block b in blocks)
             {
-                
+
                 if (ball.BlockCollision(b))
                 {
                     b.hp--;
@@ -253,7 +253,9 @@ namespace BrickBreaker
 
             // Draws blocks
             foreach (Block b in blocks)
-            { 
+            {
+
+
                 if (b.colour == 1)
                 {
                     e.Graphics.FillRectangle(blockBrush, b.x, b.y, b.width, b.height);
