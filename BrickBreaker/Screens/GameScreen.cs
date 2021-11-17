@@ -34,13 +34,13 @@ namespace BrickBreaker
         // list of all blocks for current level
         List<Block> blocks = new List<Block>();
         List<PowerUp> powerUps = new List<PowerUp>();
-        Image[] powerUpImages = new Image[5];
+        Image[] powerUpImages = {BrickBreaker.Properties.Resources.Fire_Flower, BrickBreaker.Properties.Resources.Super_Star, BrickBreaker.Properties.Resources.Double_Cherry, BrickBreaker.Properties.Resources.Super_Mushroom, BrickBreaker.Properties.Resources.Mini_Mushroom};
+
 
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
         SolidBrush ballBrush = new SolidBrush(Color.White);
         SolidBrush textBrush = new SolidBrush(Color.White);
-        SolidBrush blockBrush0 = new SolidBrush(Color.White);
         SolidBrush blockBrush = new SolidBrush(Color.Red);
         SolidBrush blockBrush2 = new SolidBrush(Color.Yellow);
         SolidBrush blockBrush3 = new SolidBrush(Color.Green);
@@ -62,9 +62,6 @@ namespace BrickBreaker
 
         public void OnStart()
         {
-            //fill image array in order of powerup type
-            Image[] powerUpImages = { BrickBreaker.Properties.Resources.Fire_Flower, BrickBreaker.Properties.Resources.Super_Star, BrickBreaker.Properties.Resources.Double_Cherry, BrickBreaker.Properties.Resources.Super_Mushroom, BrickBreaker.Properties.Resources.Mini_Mushroom };
-
             //set life counter
             lives = 3;
 
@@ -312,11 +309,13 @@ namespace BrickBreaker
 
         public void SpawnPowerUp(int x, int y)
         {
-            int size = 20;
+            int size = 40;
             int speed = 3;
             int type = randGen.Next(1, 5);
 
             PowerUp p = new PowerUp(x, y, size, speed, type);
+
+            powerUps.Add(p);
         }
     }
 }
