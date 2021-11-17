@@ -170,6 +170,12 @@ namespace BrickBreaker
                 paddle.Move("right");
             }
 
+            //move powerups
+            foreach (PowerUp p in powerUps)
+            {
+                p.Move();
+            }
+
             // Move ball
             ball.Move();
 
@@ -297,6 +303,7 @@ namespace BrickBreaker
             // Draws ball
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
 
+            //draws life counter
             e.Graphics.DrawString($"Lives left: {lives}", textFont, textBrush, 370, 500);
         }
 

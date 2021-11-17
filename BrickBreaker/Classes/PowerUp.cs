@@ -22,7 +22,8 @@ namespace BrickBreaker
             speed = _speed;
             type = _type;
         }
-        public void PowerUpMove()
+
+        public void Move()
         {           
             y = y - speed;         
         }
