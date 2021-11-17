@@ -5,21 +5,21 @@
     <y>83</y>
     <hp>1</hp>
     <colour>1</colour>
-    <type>1</type>
+    <type>0</type>
   </brick>
   <brick>
     <x>92</x>
     <y>117</y>
     <hp>1</hp>
     <colour>1</colour>
-    <type>1</type>
+    <type>0</type>
   </brick>
   <brick>
     <x>92</x>
     <y>153</y>
     <hp>1</hp>
     <colour>1</colour>
-    <type>1</type>
+    <type>0</type>
   </brick>
   <brick>
     <x>132</x>

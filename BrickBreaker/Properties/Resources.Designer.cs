@@ -63,19 +63,9 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _1_UpMushroom {
+        internal static System.Drawing.Bitmap _1Up_Mushroom {
             get {
-                object obj = ResourceManager.GetObject("_1_UpMushroom", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Cloud_Flower {
-            get {
-                object obj = ResourceManager.GetObject("Cloud_Flower", resourceCulture);
+                object obj = ResourceManager.GetObject("1Up_Mushroom", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,29 +93,9 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Fire_flower {
+        internal static System.Drawing.Bitmap Fire_Flower {
             get {
-                object obj = ResourceManager.GetObject("Fire_flower", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Ice_Flower {
-            get {
-                object obj = ResourceManager.GetObject("Ice_Flower", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Mega_Mushroom {
-            get {
-                object obj = ResourceManager.GetObject("Mega_Mushroom", resourceCulture);
+                object obj = ResourceManager.GetObject("Fire_Flower", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -136,46 +106,6 @@ namespace BrickBreaker.Properties {
         internal static System.Drawing.Bitmap Mini_Mushroom {
             get {
                 object obj = ResourceManager.GetObject("Mini_Mushroom", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Poison_Mushroom {
-            get {
-                object obj = ResourceManager.GetObject("Poison_Mushroom", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Propeller_Mushroom {
-            get {
-                object obj = ResourceManager.GetObject("Propeller_Mushroom", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Spring_Mushroom {
-            get {
-                object obj = ResourceManager.GetObject("Spring_Mushroom", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Super_Leaf {
-            get {
-                object obj = ResourceManager.GetObject("Super_Leaf", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
