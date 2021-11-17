@@ -14,7 +14,6 @@ namespace BrickBreaker
         public static Random randGen = new Random();
         public static string powerUpPicture;
 
-
         //powerup types as follows: 1 - fire flower, 2 - super star, 3 - cherry, 4 - super mushroom, 5 - mini mushrooms
 
         public PowerUp(int _x, int _y, int _size, int _speed, int _type)
@@ -25,7 +24,8 @@ namespace BrickBreaker
             speed = _speed;
             type = _type;
         }
-        public void PowerUpMove()
+
+        public void Move()
         {           
             y = y - speed;
         }
