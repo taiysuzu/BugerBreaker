@@ -94,7 +94,7 @@ namespace BrickBreaker
 
             int newX, newY, newHp, newColour, newType;
 
-            XmlReader reader = XmlReader.Create("Resources/level2.xml");
+            XmlReader reader = XmlReader.Create("Resources/level1.xml");
 
             while (reader.Read())
             {
@@ -280,6 +280,8 @@ namespace BrickBreaker
 
             e.Graphics.DrawString($"Lives left: {lives}", textFont, textBrush, 370, 500);
         }
+
+        
 
         public void SpawnPowerUp()
         {
