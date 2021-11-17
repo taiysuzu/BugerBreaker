@@ -95,7 +95,7 @@ namespace BrickBreaker
 
             int newX, newY, newHp, newColour, newType;
 
-            XmlReader reader = XmlReader.Create("Resources/level2.xml");
+            XmlReader reader = XmlReader.Create("Resources/level1.xml");
 
             while (reader.Read())
             {

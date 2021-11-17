@@ -1,246 +1,302 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?> 
 <level>
   <brick>
-    <x>16</x>
-    <y>79</y>
+    <x>92</x>
+    <y>83</y>
     <hp>1</hp>
     <colour>1</colour>
     <type>0</type>
   </brick>
   <brick>
-    <x>68</x>
-    <y>46</y>
+    <x>92</x>
+    <y>117</y>
     <hp>1</hp>
     <colour>1</colour>
     <type>0</type>
   </brick>
   <brick>
-    <x>124</x>
-    <y>17</y>
+    <x>92</x>
+    <y>153</y>
     <hp>1</hp>
     <colour>1</colour>
     <type>0</type>
   </brick>
   <brick>
-    <x>668</x>
-    <y>17</y>
+    <x>132</x>
+    <y>153</y>
     <hp>1</hp>
     <colour>1</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>725</x>
-    <y>46</y>
+    <x>174</x>
+    <y>153</y>
     <hp>1</hp>
     <colour>1</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>779</x>
-    <y>79</y>
+    <x>174</x>
+    <y>117</y>
     <hp>1</hp>
     <colour>1</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>274</x>
-    <y>228</y>
+    <x>174</x>
+    <y>83</y>
     <hp>1</hp>
     <colour>1</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>218</x>
-    <y>228</y>
+    <x>132</x>
+    <y>83</y>
     <hp>1</hp>
     <colour>1</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>162</x>
-    <y>190</y>
+    <x>324</x>
+    <y>48</y>
     <hp>1</hp>
     <colour>1</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>162</x>
-    <y>160</y>
+    <x>324</x>
+    <y>82</y>
     <hp>1</hp>
     <colour>1</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>162</x>
-    <y>130</y>
+    <x>324</x>
+    <y>118</y>
     <hp>1</hp>
     <colour>1</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>218</x>
-    <y>92</y>
+    <x>324</x>
+    <y>153</y>
     <hp>1</hp>
     <colour>1</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>274</x>
-    <y>92</y>
+    <x>324</x>
+    <y>187</y>
     <hp>1</hp>
     <colour>1</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>498</x>
-    <y>92</y>
+    <x>365</x>
+    <y>187</y>
     <hp>1</hp>
     <colour>1</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>554</x>
-    <y>92</y>
+    <x>405</x>
+    <y>187</y>
     <hp>1</hp>
     <colour>1</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>610</x>
-    <y>130</y>
+    <x>447</x>
+    <y>187</y>
     <hp>1</hp>
     <colour>1</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>610</x>
-    <y>160</y>
+    <x>488</x>
+    <y>187</y>
     <hp>1</hp>
     <colour>1</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>610</x>
-    <y>190</y>
-    <hp>1</hp>
-    <colour>4</colour>
-    <type>6</type>
-  </brick>
-  <brick>
-    <x>554</x>
-    <y>228</y>
+    <x>488</x>
+    <y>153</y>
     <hp>1</hp>
     <colour>1</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>498</x>
-    <y>228</y>
+    <x>488</x>
+    <y>118</y>
     <hp>1</hp>
     <colour>1</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>274</x>
-    <y>160</y>
+    <x>488</x>
+    <y>82</y>
+    <hp>1</hp>
+    <colour>1</colour>
+    <type>1</type>
+  </brick>
+  <brick>
+    <x>488</x>
+    <y>48</y>
+    <hp>1</hp>
+    <colour>1</colour>
+    <type>1</type>
+  </brick>
+  <brick>
+    <x>447</x>
+    <y>48</y>
+    <hp>1</hp>
+    <colour>1</colour>
+    <type>1</type>
+  </brick>
+  <brick>
+    <x>405</x>
+    <y>48</y>
+    <hp>1</hp>
+    <colour>1</colour>
+    <type>1</type>
+  </brick>
+  <brick>
+    <x>365</x>
+    <y>48</y>
+    <hp>1</hp>
+    <colour>1</colour>
+    <type>1</type>
+  </brick>
+  <brick>
+    <x>642</x>
+    <y>83</y>
+    <hp>1</hp>
+    <colour>1</colour>
+    <type>1</type>
+  </brick>
+  <brick>
+    <x>642</x>
+    <y>117</y>
+    <hp>1</hp>
+    <colour>1</colour>
+    <type>1</type>
+  </brick>
+  <brick>
+    <x>642</x>
+    <y>153</y>
+    <hp>1</hp>
+    <colour>1</colour>
+    <type>1</type>
+  </brick>
+  <brick>
+    <x>682</x>
+    <y>153</y>
+    <hp>1</hp>
+    <colour>1</colour>
+    <type>1</type>
+  </brick>
+  <brick>
+    <x>724</x>
+    <y>153</y>
+    <hp>1</hp>
+    <colour>1</colour>
+    <type>1</type>
+  </brick>
+  <brick>
+    <x>724</x>
+    <y>117</y>
+    <hp>1</hp>
+    <colour>1</colour>
+    <type>1</type>
+  </brick>
+  <brick>
+    <x>724</x>
+    <y>83</y>
+    <hp>1</hp>
+    <colour>1</colour>
+    <type>1</type>
+  </brick>
+  <brick>
+    <x>682</x>
+    <y>83</y>
+    <hp>1</hp>
+    <colour>1</colour>
+    <type>1</type>
+  </brick>
+  <brick>
+    <x>132</x>
+    <y>117</y>
     <hp>2</hp>
     <colour>2</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>330</x>
-    <y>190</y>
+    <x>365</x>
+    <y>82</y>
     <hp>2</hp>
     <colour>2</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>330</x>
-    <y>130</y>
+    <x>365</x>
+    <y>118</y>
     <hp>2</hp>
     <colour>2</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>386</x>
-    <y>160</y>
+    <x>365</x>
+    <y>153</y>
     <hp>2</hp>
     <colour>2</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>442</x>
-    <y>130</y>
+    <x>405</x>
+    <y>153</y>
     <hp>2</hp>
     <colour>2</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>442</x>
-    <y>190</y>
+    <x>447</x>
+    <y>153</y>
     <hp>2</hp>
     <colour>2</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>498</x>
-    <y>160</y>
+    <x>447</x>
+    <y>118</y>
     <hp>2</hp>
     <colour>2</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>274</x>
-    <y>130</y>
-    <hp>3</hp>
-    <colour>3</colour>
+    <x>447</x>
+    <y>82</y>
+    <hp>2</hp>
+    <colour>2</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>274</x>
-    <y>190</y>
-    <hp>3</hp>
-    <colour>3</colour>
+    <x>405</x>
+    <y>82</y>
+    <hp>2</hp>
+    <colour>2</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>330</x>
-    <y>160</y>
-    <hp>3</hp>
-    <colour>3</colour>
+    <x>682</x>
+    <y>117</y>
+    <hp>2</hp>
+    <colour>2</colour>
     <type>1</type>
   </brick>
   <brick>
-    <x>386</x>
-    <y>190</y>
-    <hp>3</hp>
-    <colour>3</colour>
-    <type>1</type>
-  </brick>
-  <brick>
-    <x>386</x>
-    <y>130</y>
-    <hp>3</hp>
-    <colour>3</colour>
-    <type>1</type>
-  </brick>
-  <brick>
-    <x>442</x>
-    <y>160</y>
-    <hp>3</hp>
-    <colour>3</colour>
-    <type>1</type>
-  </brick>
-  <brick>
-    <x>498</x>
-    <y>190</y>
-    <hp>3</hp>
-    <colour>3</colour>
-    <type>1</type>
-  </brick>
-  <brick>
-    <x>498</x>
-    <y>130</y>
+    <x>405</x>
+    <y>118</y>
     <hp>3</hp>
     <colour>3</colour>
     <type>1</type>
