@@ -310,7 +310,7 @@ namespace BrickBreaker
         public void SpawnPowerUp(int x, int y)
         {
             int size = 40;
-            int speed = 3;
+            int speed = 4;
             int type = randGen.Next(1, 5);
 
             PowerUp p = new PowerUp(x, y, size, speed, type);
