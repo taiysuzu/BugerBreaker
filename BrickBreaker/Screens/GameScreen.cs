@@ -33,7 +33,8 @@ namespace BrickBreaker
 
         // list of all blocks for current level
         List<Block> blocks = new List<Block>();
-        string[] powerUps = new string[5];
+        List<PowerUp> powerUps = new List<PowerUp>();
+        Image[] powerUpImages = new Image[5];
 
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
@@ -60,7 +61,9 @@ namespace BrickBreaker
 
         public void OnStart()
         {
-            string[] powerUps = { "BrickBreaker.Properties.Resources.Fire_flower", "BrickBreaker.Properties.Resources.Super_Star", "BrickBreaker.Properties.Resources.Double_Cherry", "BrickBreaker.Properties.Resources.Super_Mushroom", "BrickBreaker.Properties.Resources.Mini_Mushroom" };
+            //fill image array in order of powerup type
+            Image[] powerUpImages = { BrickBreaker.Properties.Resources.Fire_Flower, BrickBreaker.Properties.Resources.Super_Star, BrickBreaker.Properties.Resources.Double_Cherry, BrickBreaker.Properties.Resources.Super_Mushroom, BrickBreaker.Properties.Resources.Mini_Mushroom};
+            
             //set life counter
             lives = 3;
 
@@ -90,7 +93,6 @@ namespace BrickBreaker
             //clears screen and loads level 1
 
             blocks.Clear();
-
 
             int newX, newY, newHp, newColour, newType;
 
@@ -248,31 +250,49 @@ namespace BrickBreaker
 
             // Draws blocks
             foreach (Block b in blocks)
-            {
-                //e.Graphics.DrawImage(powerImage[0], 20, 20);
-                //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Fire_flower, 20, 20);
-                //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Super_Star, 20, 20);
-                //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Double_Cherry, 20, 20);
-                //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Super_Mushroom, 20, 20);
-                //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Mini_Mushroom, 20, 20);
-
+            { 
                 if (b.colour == 1)
                 {
                     e.Graphics.FillRectangle(blockBrush, b.x, b.y, b.width, b.height);
                 }
-                if (b.colour == 2)
+                else if (b.colour == 2)
                 {
                     e.Graphics.FillRectangle(blockBrush2, b.x, b.y, b.width, b.height);
                 }
-                if (b.colour == 3)
+                else if (b.colour == 3)
                 {
                     e.Graphics.FillRectangle(blockBrush3, b.x, b.y, b.width, b.height);
                 }
-                if (b.colour == 4)
+                else if (b.colour == 4)
                 {
                     e.Graphics.FillRectangle(blockBrush4, b.x, b.y, b.width, b.height);
                 }
 
+            }
+
+            //draws powerups
+            foreach (PowerUp p in powerUps)
+            {
+                if (p.type == 1)
+                {
+                    e.Graphics.DrawImage(powerUpImages[p.type - 1], p.x, p.y, p.size, p.size);
+                }
+                else if (p.type == 2)
+                {
+                    e.Graphics.DrawImage(powerUpImages[p.type - 1], p.x, p.y, p.size, p.size);
+                }
+                else if (p.type == 3)
+                {
+                    e.Graphics.DrawImage(powerUpImages[p.type - 1], p.x, p.y, p.size, p.size);
+                }
+                else if (p.type == 4)
+                {
+                    e.Graphics.DrawImage(powerUpImages[p.type - 1], p.x, p.y, p.size, p.size);
+                }
+                else if (p.type == 5)
+                {
+                    e.Graphics.DrawImage(powerUpImages[p.type - 1], p.x, p.y, p.size, p.size);
+                }
             }
 
             // Draws ball
