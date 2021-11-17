@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace BrickBreaker
 {
     class PowerUp
     {
         public int x, y, size, speed, type;
-        public Color color;
 
         //powerup types as follows: 1 - fire flower, 2 - super star, 3 - cherry, 4 - super mushroom, 5 - mini mushrooms
 
@@ -25,7 +25,19 @@ namespace BrickBreaker
 
         public void Move()
         {           
-            y = y - speed;         
+            y = y + speed;         
+        }
+
+        public bool BottomCollision(UserControl UC)
+        {
+            Boolean didCollide = false;
+
+            if (y >= UC.Height)
+            {
+                didCollide = true;
+            }
+
+            return didCollide;
         }
     }
 }

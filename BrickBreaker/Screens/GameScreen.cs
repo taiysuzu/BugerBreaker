@@ -231,6 +231,16 @@ namespace BrickBreaker
                 }
             }
 
+            //check powerup collision with bottom
+            foreach (PowerUp p in powerUps)
+            {
+                if (p.BottomCollision(this))
+                {
+                    powerUps.Remove(p);
+                    break;
+                }
+            }
+
             //redraw the screen
             Refresh();
         }
@@ -313,6 +323,7 @@ namespace BrickBreaker
             int speed = 3;
             int type = randGen.Next(1, 5);
 
+            //create powerup object and spawn it on powerup block's x and y
             PowerUp p = new PowerUp(x, y, size, speed, type);
 
             powerUps.Add(p);
