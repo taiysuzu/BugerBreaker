@@ -35,7 +35,7 @@ namespace BrickBreaker
         // list of all blocks for current level
         public static List<Block> blocks = new List<Block>();
         public static List<PowerUp> powerUps = new List<PowerUp>();
-        public static Image[] powerUpImages = {BrickBreaker.Properties.Resources.Fire_Flower, BrickBreaker.Properties.Resources.Super_Star, BrickBreaker.Properties.Resources.Double_Cherry, BrickBreaker.Properties.Resources.Super_Mushroom, BrickBreaker.Properties.Resources.Mini_Mushroom};
+        public static Image[] powerUpImages = { BrickBreaker.Properties.Resources.Fire_Flower, BrickBreaker.Properties.Resources.Super_Star, BrickBreaker.Properties.Resources.Double_Cherry, BrickBreaker.Properties.Resources.Super_Mushroom, BrickBreaker.Properties.Resources.Mini_Mushroom };
 
 
         // Brushes
@@ -50,7 +50,13 @@ namespace BrickBreaker
         //font for text
         Font textFont = new Font("Arial", 16);
 
+        //random generator
         public static Random randGen = new Random();
+
+        //global paddle and ball values
+        int paddleWidth, paddleHeight, paddleX, paddleY, paddleSpeed;
+
+        int ballX, ballY, xSpeed, ySpeed, ballSize;
 
         int counter = 0;
         #endregion
@@ -71,25 +77,26 @@ namespace BrickBreaker
             leftArrowDown = rightArrowDown = false;
 
             // setup starting paddle values and create paddle object
-            int paddleWidth = 80;
-            int paddleHeight = 20;
-            int paddleX = ((this.Width / 2) - (paddleWidth / 2));
-            int paddleY = (this.Height - paddleHeight) - 60;
-            int paddleSpeed = 8;
+            paddleWidth = 80;
+            paddleHeight = 20;
+            paddleX = ((this.Width / 2) - (paddleWidth / 2));
+            paddleY = (this.Height - paddleHeight) - 60;
+            paddleSpeed = 8;
             paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, paddleSpeed, Color.White);
 
             // setup starting ball values
-            int ballX = this.Width / 2 - 10;
-            int ballY = this.Height - paddle.height - 80;
+            ballX = this.Width / 2 - 10;
+            ballY = this.Height - paddle.height - 80;
 
             // Creates a new ball
-            int xSpeed = 6;
-            int ySpeed = 6;
-            int ballSize = 20;
+            xSpeed = 5;
+            ySpeed = 5;
+            ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
-            #region Creates blocks for generic level. Need to replace with code that loads levels.
+            #region Temporary code that loads levels.
 
+            //TODO: load level screen
             //clears screen and loads level 1
 
             blocks.Clear();
@@ -318,7 +325,7 @@ namespace BrickBreaker
                 else if (p.type == 5)
                 {
                     e.Graphics.DrawImage(powerUpImages[p.type - 1], p.x, p.y, p.size, p.size);
-                }                        
+                }
             }
 
             // Draws ball
@@ -327,7 +334,7 @@ namespace BrickBreaker
             //draws life counter
             e.Graphics.DrawString($"Lives left: {lives}", textFont, textBrush, 370, 500);
 
-          
+
         }
 
         public void SpawnPowerUp(int x, int y)
@@ -341,41 +348,41 @@ namespace BrickBreaker
 
             powerUps.Add(p);
         }
-        
+
         public void FireFlower()
         {
-            
+
         }
-        
+
         public void SuperStar()
         {
 
         }
-        
+
         public void DoubleCherry()
         {
 
         }
-        
+
         public void SuperMushroom()
         {
             counter++;
         }
-        
+
         public void MiniMuschroom()
         {
 
         }
-     
+
         public void ActivatePowerUp(PowerUp p)
         {
             if (p.type == 1)
             {
-                
+
             }
             else if (p.type == 2)
             {
-                
+
             }
             else if (p.type == 3)
             {
@@ -383,7 +390,7 @@ namespace BrickBreaker
             }
             else if (p.type == 4)
             {
-                
+
             }
             else if (p.type == 5)
             {
