@@ -48,6 +48,7 @@ namespace BrickBreaker
             if (ballRec.IntersectsWith(paddleRec))
             {
                 ySpeed *= -1;
+                y = p.y - size;
             }
         }
 
