@@ -333,7 +333,10 @@ namespace BrickBreaker
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
 
             //draws life counter
-            e.Graphics.DrawString($"Lives left: {lives}", textFont, textBrush, 370, 500);
+            e.Graphics.DrawString($"Lives left: {lives}", textFont, textBrush, 370, 490);
+
+            //draws score counter
+            e.Graphics.DrawString($"Score: {score}", textFont, textBrush, 370, 510);
         }
 
         public void SpawnPowerUp(int x, int y)
