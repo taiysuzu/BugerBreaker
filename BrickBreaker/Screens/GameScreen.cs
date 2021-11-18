@@ -408,6 +408,7 @@ namespace BrickBreaker
             superMushCounter = 0;
             superMushActive = true;
             powerActive = true;
+
             paddle.width = 250;
         }
 
@@ -435,9 +436,7 @@ namespace BrickBreaker
                 SuperMushroom();
             }
             else if (p.type == 5)
-            {
-                miniMushCounter = 0;
-                powerActive = true;
+            { 
                 MiniMushroom();
             }
 
