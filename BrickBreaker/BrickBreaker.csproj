@@ -153,6 +153,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Resources\question block.png" />
     <None Include="Resources\Super Star.png" />
     <None Include="Resources\Mega Mushroom.png" />
     <None Include="Resources\Mini Mushroom.png" />
@@ -164,6 +165,10 @@
     <None Include="Resources\Double Cherry.png" />
     <None Include="Resources\1-UpMushroom.png" />
     <None Include="Resources\Fire flower.png" />
+    <None Include="Resources\341695__projectsu012__coins-1.wav" />
+    <None Include="Resources\242857__plasterbrain__coin-get.ogg" />
+    <None Include="Resources\242857__plasterbrain__coin-get %281%29.ogg" />
+    <None Include="Resources\415083__harrietniamh__video-game-coin.wav" />
     <Content Include="Resources\highscores.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

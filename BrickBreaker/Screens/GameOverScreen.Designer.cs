@@ -153,14 +153,16 @@ namespace BrickBreaker
             // menuButton
             // 
             this.menuButton.BackColor = System.Drawing.Color.White;
+            this.menuButton.BackgroundImage = global::BrickBreaker.Properties.Resources.questionBlock;
+            this.menuButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.menuButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.menuButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
             this.menuButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.menuButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.menuButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.menuButton.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuButton.Location = new System.Drawing.Point(223, 432);
+            this.menuButton.Location = new System.Drawing.Point(213, 412);
             this.menuButton.Name = "menuButton";
-            this.menuButton.Size = new System.Drawing.Size(194, 77);
+            this.menuButton.Size = new System.Drawing.Size(151, 116);
             this.menuButton.TabIndex = 1;
             this.menuButton.Text = "Menu";
             this.menuButton.UseVisualStyleBackColor = false;
@@ -169,12 +171,14 @@ namespace BrickBreaker
             // exitButton
             // 
             this.exitButton.BackColor = System.Drawing.Color.White;
+            this.exitButton.BackgroundImage = global::BrickBreaker.Properties.Resources.questionBlock;
+            this.exitButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.exitButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.exitButton.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitButton.Location = new System.Drawing.Point(443, 432);
+            this.exitButton.Location = new System.Drawing.Point(496, 412);
             this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(194, 77);
+            this.exitButton.Size = new System.Drawing.Size(151, 116);
             this.exitButton.TabIndex = 2;
             this.exitButton.Text = "Exit";
             this.exitButton.UseVisualStyleBackColor = false;
