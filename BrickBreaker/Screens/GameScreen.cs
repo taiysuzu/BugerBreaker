@@ -51,6 +51,7 @@ namespace BrickBreaker
 
         public static Random randGen = new Random();
 
+        int counter = 0;
         #endregion
 
         public GameScreen()
@@ -297,7 +298,7 @@ namespace BrickBreaker
                 else if (p.type == 5)
                 {
                     e.Graphics.DrawImage(powerUpImages[p.type - 1], p.x, p.y, p.size, p.size);
-                }
+                }                        
             }
 
             // Draws ball
@@ -305,6 +306,8 @@ namespace BrickBreaker
 
             //draws life counter
             e.Graphics.DrawString($"Lives left: {lives}", textFont, textBrush, 370, 500);
+
+          
         }
 
         public void SpawnPowerUp(int x, int y)
@@ -316,6 +319,34 @@ namespace BrickBreaker
             PowerUp p = new PowerUp(x, y, size, speed, type);
 
             powerUps.Add(p);
+        }
+        public void FireFlower()
+        {
+            
+        }
+        public void SuperMushroom()
+        {
+            counter++;
+        }
+        public void OneUpMuschroom()
+        {
+
+        }
+        public void MiniMuschroom()
+        {
+
+        }
+        public void SuperStar()
+        {
+
+        }
+        public void DoubleCherry()
+        {
+
+        }
+        public void  Coin()
+        {
+
         }
     }
 }

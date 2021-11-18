@@ -164,6 +164,7 @@
     <None Include="Resources\Double Cherry.png" />
     <None Include="Resources\1-UpMushroom.png" />
     <None Include="Resources\Fire flower.png" />
+    <None Include="Resources\fire.png" />
     <Content Include="Resources\highscores.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
