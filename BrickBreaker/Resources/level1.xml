@@ -4,22 +4,22 @@
     <x>25</x>
     <y>162</y>
     <hp>1</hp>
-    <colour>1</colour>
-    <type>1</type>
+    <colour>4</colour>
+    <type>0</type>
   </brick>
   <brick>
     <x>56</x>
     <y>153</y>
     <hp>1</hp>
-    <colour>1</colour>
-    <type>1</type>
+    <colour>4</colour>
+    <type>0</type>
   </brick>
   <brick>
     <x>87</x>
     <y>144</y>
     <hp>1</hp>
-    <colour>1</colour>
-    <type>1</type>
+    <colour>4</colour>
+    <type>0</type>
   </brick>
   <brick>
     <x>118</x>
