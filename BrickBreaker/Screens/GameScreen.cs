@@ -59,10 +59,10 @@ namespace BrickBreaker
         int ballX, ballY, xSpeed, ySpeed, ballSize;
 
         //powerup counters
-        int superMushCounter = 0;
+        int fireCounter, starCounter, cherryCounter, superMushCounter, miniMushCounter = 0;
 
         //powerup activated or not
-        bool powerActive = false;
+        bool powerActive, fireActive, starActive, cherryActive, superMushActive, miniMushActive = false;
         #endregion
 
         public GameScreen()
@@ -172,15 +172,37 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-            //check if powerups should end
+            //check if any powerups are active
             if (powerActive == true)
-            {
-                superMushCounter++;
-                if (superMushCounter == 20)
+            {//check which powerups are active
+                if (fireActive == true)
                 {
-                    //if counter reaches limit, reset powered up values to originals
-                    paddle.width = 80;
-                    superMushCounter = 0;
+
+                }
+                else if (starActive == true)
+                {
+
+                }
+                else if (cherryActive == true)
+                {
+
+                }
+                else if (superMushActive == true)
+                {
+                    superMushCounter++;
+                    if (superMushCounter == 20)
+                    {
+                        paddle.width = 80;
+                        superMushActive = false;
+                    }
+                }
+                else if (miniMushActive == true)
+                {
+
+                }
+                else if (fireActive && starActive && cherryActive && superMushActive && miniMushActive == false)
+                {
+                    powerActive = false;
                 }
             }
             // Move the paddle
@@ -383,10 +405,13 @@ namespace BrickBreaker
 
         public void SuperMushroom()
         {
+            superMushCounter = 0;
+            superMushActive = true;
+            powerActive = true;
             paddle.width = 250;
         }
 
-        public void MiniMuschroom()
+        public void MiniMushroom()
         {
 
         }
@@ -395,25 +420,25 @@ namespace BrickBreaker
         {
             if (p.type == 1)
             {
-                
+               
             }
             else if (p.type == 2)
             {
-            
+
             }
             else if (p.type == 3)
             {
-            
+
             }
             else if (p.type == 4)
             {
-                superMushCounter = 0;
-                powerActive = true;
                 SuperMushroom();
             }
             else if (p.type == 5)
             {
- 
+                miniMushCounter = 0;
+                powerActive = true;
+                MiniMushroom();
             }
 
             powerUps.Remove(p);
