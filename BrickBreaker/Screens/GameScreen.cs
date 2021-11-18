@@ -82,7 +82,7 @@ namespace BrickBreaker
             paddleY = (this.Height - paddleHeight) - 60;
             paddleSpeed = 8;
             paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, paddleSpeed, Color.White);
-
+            
             // setup starting ball values
             ballX = this.Width / 2 - 10;
             ballY = this.Height - paddle.height - 80;
@@ -168,6 +168,7 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            counter++;
             // Move the paddle
             if (leftArrowDown && paddle.x > 0)
             {
@@ -365,11 +366,10 @@ namespace BrickBreaker
 
         public void SuperMushroom()
         {
-            counter++;
-            paddle.x = 120;
-            if (counter == 20)
+            paddle.width = 250;
+            if (counter == 15)
             {
-                paddle.x = 100;
+                paddle.width = 80;
                 counter = 0;
             }
         }
@@ -383,23 +383,28 @@ namespace BrickBreaker
         {
             if (p.type == 1)
             {
-    
+                counter = 0;
+                SuperMushroom();
             }
             else if (p.type == 2)
             {
-            
+                counter = 0;
+                SuperMushroom();
             }
             else if (p.type == 3)
             {
-   
+                counter = 0;
+                SuperMushroom();
             }
             else if (p.type == 4)
             {
+                counter = 0;
                 SuperMushroom();
             }
             else if (p.type == 5)
             {
- 
+                counter = 0;
+                SuperMushroom();
             }
 
             powerUps.Remove(p);
