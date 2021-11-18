@@ -334,8 +334,6 @@ namespace BrickBreaker
 
             //draws life counter
             e.Graphics.DrawString($"Lives left: {lives}", textFont, textBrush, 370, 500);
-
-
         }
 
         public void SpawnPowerUp(int x, int y)
@@ -368,6 +366,12 @@ namespace BrickBreaker
         public void SuperMushroom()
         {
             counter++;
+            paddle.x = 120;
+            if (counter == 20)
+            {
+                paddle.x = 100;
+                counter = 0;
+            }
         }
 
         public void MiniMuschroom()
@@ -379,23 +383,23 @@ namespace BrickBreaker
         {
             if (p.type == 1)
             {
-
+    
             }
             else if (p.type == 2)
             {
-
+            
             }
             else if (p.type == 3)
             {
-
+   
             }
             else if (p.type == 4)
             {
-
+                SuperMushroom();
             }
             else if (p.type == 5)
             {
-
+ 
             }
 
             powerUps.Remove(p);
