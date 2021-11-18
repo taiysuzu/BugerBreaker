@@ -33,9 +33,9 @@ namespace BrickBreaker
         Ball ball;
 
         // list of all blocks for current level
-        List<Block> blocks = new List<Block>();
-        List<PowerUp> powerUps = new List<PowerUp>();
-        Image[] powerUpImages = {BrickBreaker.Properties.Resources.Fire_Flower, BrickBreaker.Properties.Resources.Super_Star, BrickBreaker.Properties.Resources.Double_Cherry, BrickBreaker.Properties.Resources.Super_Mushroom, BrickBreaker.Properties.Resources.Mini_Mushroom};
+        public static List<Block> blocks = new List<Block>();
+        public static List<PowerUp> powerUps = new List<PowerUp>();
+        public static Image[] powerUpImages = {BrickBreaker.Properties.Resources.Fire_Flower, BrickBreaker.Properties.Resources.Super_Star, BrickBreaker.Properties.Resources.Double_Cherry, BrickBreaker.Properties.Resources.Super_Mushroom, BrickBreaker.Properties.Resources.Mini_Mushroom};
 
 
         // Brushes
@@ -242,6 +242,15 @@ namespace BrickBreaker
                 }
             }
 
+            //check powerup collision with paddle
+            foreach (PowerUp p in powerUps)
+            {
+                if (p.PaddleCollision(paddle))
+                {
+                    ActivatePowerUp(p);
+                }
+            }
+
             //redraw the screen
             Refresh();
         }
@@ -328,6 +337,32 @@ namespace BrickBreaker
             PowerUp p = new PowerUp(x, y, size, speed, type);
 
             powerUps.Add(p);
+        }
+
+        public void ActivatePowerUp(PowerUp p)
+        {
+            if (p.type == 1)
+            {
+                
+            }
+            else if (p.type == 2)
+            {
+                
+            }
+            else if (p.type == 3)
+            {
+
+            }
+            else if (p.type == 4)
+            {
+                
+            }
+            else if (p.type == 5)
+            {
+
+            }
+
+            powerUps.Remove(p);
         }
     }
 }
