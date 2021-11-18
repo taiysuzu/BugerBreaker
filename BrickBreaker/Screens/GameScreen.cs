@@ -18,6 +18,7 @@ namespace BrickBreaker
 {
     public partial class GameScreen : UserControl
     {
+
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
@@ -32,8 +33,10 @@ namespace BrickBreaker
         Ball ball;
 
         // list of all blocks for current level
-        List<Block> blocks = new List<Block>();
-        string[] powerUps = new string[5];
+        public static List<Block> blocks = new List<Block>();
+        public static List<PowerUp> powerUps = new List<PowerUp>();
+        public static Image[] powerUpImages = { BrickBreaker.Properties.Resources.Fire_Flower, BrickBreaker.Properties.Resources.Super_Star, BrickBreaker.Properties.Resources.Double_Cherry, BrickBreaker.Properties.Resources.Super_Mushroom, BrickBreaker.Properties.Resources.Mini_Mushroom };
+
 
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
@@ -47,8 +50,15 @@ namespace BrickBreaker
         //font for text
         Font textFont = new Font("Arial", 16);
 
+        //random generator
         public static Random randGen = new Random();
-        public static string powerImage;
+
+        //global paddle and ball values
+        int paddleWidth, paddleHeight, paddleX, paddleY, paddleSpeed;
+
+        int ballX, ballY, xSpeed, ySpeed, ballSize;
+
+        int counter = 0;
         #endregion
 
         public GameScreen()
@@ -57,10 +67,8 @@ namespace BrickBreaker
             OnStart();
         }
 
-
         public void OnStart()
         {
-            string[] powerUps = { "BrickBreaker.Properties.Resources.Fire_flower", "BrickBreaker.Properties.Resources.Super_Star", "BrickBreaker.Properties.Resources.Double_Cherry", "BrickBreaker.Properties.Resources.Super_Mushroom", "BrickBreaker.Properties.Resources.Mini_Mushroom" };
             //set life counter
             lives = 3;
 
@@ -68,33 +76,33 @@ namespace BrickBreaker
             leftArrowDown = rightArrowDown = false;
 
             // setup starting paddle values and create paddle object
-            int paddleWidth = 80;
-            int paddleHeight = 20;
-            int paddleX = ((this.Width / 2) - (paddleWidth / 2));
-            int paddleY = (this.Height - paddleHeight) - 60;
-            int paddleSpeed = 8;
+            paddleWidth = 80;
+            paddleHeight = 20;
+            paddleX = ((this.Width / 2) - (paddleWidth / 2));
+            paddleY = (this.Height - paddleHeight) - 60;
+            paddleSpeed = 8;
             paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, paddleSpeed, Color.White);
 
             // setup starting ball values
-            int ballX = this.Width / 2 - 10;
-            int ballY = this.Height - paddle.height - 80;
+            ballX = this.Width / 2 - 10;
+            ballY = this.Height - paddle.height - 80;
 
             // Creates a new ball
-            int xSpeed = 6;
-            int ySpeed = 6;
-            int ballSize = 20;
+            xSpeed = 5;
+            ySpeed = 5;
+            ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
-            #region Creates blocks for generic level. Need to replace with code that loads levels.
+            #region Temporary code that loads levels.
 
+            //TODO: load level screen
             //clears screen and loads level 1
 
             blocks.Clear();
 
-
             int newX, newY, newHp, newColour, newType;
 
-            XmlReader reader = XmlReader.Create("Resources/level2.xml");
+            XmlReader reader = XmlReader.Create("Resources/level1.xml");
 
             while (reader.Read())
             {
@@ -170,6 +178,12 @@ namespace BrickBreaker
                 paddle.Move("right");
             }
 
+            //move powerups
+            foreach (PowerUp p in powerUps)
+            {
+                p.Move();
+            }
+
             // Move ball
             ball.Move();
 
@@ -198,15 +212,17 @@ namespace BrickBreaker
             // Check if ball has collided with any blocks
             foreach (Block b in blocks)
             {
+
                 if (ball.BlockCollision(b))
                 {
                     b.hp--;
+                    score++;
 
                     b.colour = b.hp;
 
                     if (b.type == 0)
                     {
-                        SpawnPowerUp();
+                        SpawnPowerUp(b.x, b.y);
                     }
 
                     if (b.hp == 0)
@@ -220,6 +236,26 @@ namespace BrickBreaker
                         OnEnd();
                     }
 
+                    break;
+                }
+            }
+
+            //check powerup collision with bottom
+            foreach (PowerUp p in powerUps)
+            {
+                if (p.BottomCollision(this))
+                {
+                    powerUps.Remove(p);
+                    break;
+                }
+            }
+
+            //check powerup collision with paddle
+            foreach (PowerUp p in powerUps)
+            {
+                if (p.PaddleCollision(paddle))
+                {
+                    ActivatePowerUp(p);
                     break;
                 }
             }
@@ -249,41 +285,127 @@ namespace BrickBreaker
             // Draws blocks
             foreach (Block b in blocks)
             {
-                //e.Graphics.DrawImage(powerImage[0], 20, 20);
-                //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Fire_flower, 20, 20);
-                //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Super_Star, 20, 20);
-                //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Double_Cherry, 20, 20);
-                //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Super_Mushroom, 20, 20);
-                //e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Mini_Mushroom, 20, 20);
-
                 if (b.colour == 1)
                 {
                     e.Graphics.FillRectangle(blockBrush, b.x, b.y, b.width, b.height);
                 }
-                if (b.colour == 2)
+                else if (b.colour == 2)
                 {
                     e.Graphics.FillRectangle(blockBrush2, b.x, b.y, b.width, b.height);
                 }
-                if (b.colour == 3)
+                else if (b.colour == 3)
                 {
                     e.Graphics.FillRectangle(blockBrush3, b.x, b.y, b.width, b.height);
                 }
-                if (b.colour == 4)
+                else if (b.colour == 4)
                 {
                     e.Graphics.FillRectangle(blockBrush4, b.x, b.y, b.width, b.height);
                 }
 
             }
 
+            //draws powerups
+            foreach (PowerUp p in powerUps)
+            {
+                if (p.type == 1)
+                {
+                    e.Graphics.DrawImage(powerUpImages[p.type - 1], p.x, p.y, p.size, p.size);
+                }
+                else if (p.type == 2)
+                {
+                    e.Graphics.DrawImage(powerUpImages[p.type - 1], p.x, p.y, p.size, p.size);
+                }
+                else if (p.type == 3)
+                {
+                    e.Graphics.DrawImage(powerUpImages[p.type - 1], p.x, p.y, p.size, p.size);
+                }
+                else if (p.type == 4)
+                {
+                    e.Graphics.DrawImage(powerUpImages[p.type - 1], p.x, p.y, p.size, p.size);
+                }
+                else if (p.type == 5)
+                {
+                    e.Graphics.DrawImage(powerUpImages[p.type - 1], p.x, p.y, p.size, p.size);
+                }
+            }
+
             // Draws ball
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
 
-            e.Graphics.DrawString($"Lives left: {lives}", textFont, textBrush, 370, 500);
+            //draws life counter
+            e.Graphics.DrawString($"Lives left: {lives}", textFont, textBrush, 370, 490);
+
+            //draws score counter
+            e.Graphics.DrawString($"Score: {score}", textFont, textBrush, 370, 510);
         }
 
-        public void SpawnPowerUp()
+        public void SpawnPowerUp(int x, int y)
+        {
+            int size = 40;
+            int speed = 4;
+            int type = randGen.Next(1, 5);
+
+            //create powerup object and spawn it on powerup block's x and y
+            PowerUp p = new PowerUp(x, y, size, speed, type);
+
+            powerUps.Add(p);
+        }
+
+        public void FireFlower()
         {
 
+        }
+
+        public void SuperStar()
+        {
+
+        }
+
+        public void DoubleCherry()
+        {
+
+        }
+
+        public void SuperMushroom()
+        {
+            counter++;
+            paddle.x = 120;
+            if (counter == 20)
+            {
+                paddle.x = 100;
+                counter = 0;
+            }
+        }
+
+        public void MiniMuschroom()
+        {
+
+        }
+
+        public void ActivatePowerUp(PowerUp p)
+        {
+            if (p.type == 1)
+            {
+    
+            }
+            else if (p.type == 2)
+            {
+            
+            }
+            else if (p.type == 3)
+            {
+   
+            }
+            else if (p.type == 4)
+            {
+                SuperMushroom();
+            }
+            else if (p.type == 5)
+            {
+ 
+            }
+
+            powerUps.Remove(p);
         }
     }
 }
