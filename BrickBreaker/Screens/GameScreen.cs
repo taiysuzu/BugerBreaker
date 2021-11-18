@@ -67,7 +67,6 @@ namespace BrickBreaker
             OnStart();
         }
 
-
         public void OnStart()
         {
             //set life counter
@@ -217,6 +216,7 @@ namespace BrickBreaker
                 if (ball.BlockCollision(b))
                 {
                     b.hp--;
+                    score++;
 
                     b.colour = b.hp;
 
@@ -256,6 +256,7 @@ namespace BrickBreaker
                 if (p.PaddleCollision(paddle))
                 {
                     ActivatePowerUp(p);
+                    break;
                 }
             }
 
