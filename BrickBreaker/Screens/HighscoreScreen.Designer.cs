@@ -1,6 +1,7 @@
-﻿namespace BrickBreaker
+﻿
+namespace BrickBreaker.Screens
 {
-    partial class GameScreen
+    partial class HighscoreScreen
     {
         /// <summary> 
         /// Required designer variable.
@@ -28,35 +29,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // gameTimer
+            // Highscore
             // 
-            this.gameTimer.Enabled = true;
-            this.gameTimer.Interval = 1;
-            this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
-            // 
-
-            // GameScreen
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(4);
-            this.Name = "GameScreen";
-            this.Size = new System.Drawing.Size(1068, 678);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameScreen_Paint);
-            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.GameScreen_KeyUp);
-            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.GameScreen_PreviewKeyDown);
+            this.Name = "Highscore";
+            this.Size = new System.Drawing.Size(854, 542);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Timer gameTimer;
     }
 }

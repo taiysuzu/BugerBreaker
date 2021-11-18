@@ -18,6 +18,7 @@ namespace BrickBreaker
 {
     public partial class GameScreen : UserControl
     {
+
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
@@ -32,9 +33,9 @@ namespace BrickBreaker
         Ball ball;
 
         // list of all blocks for current level
-        List<Block> blocks = new List<Block>();
-        List<PowerUp> powerUps = new List<PowerUp>();
-        Image[] powerUpImages = {BrickBreaker.Properties.Resources.Fire_Flower, BrickBreaker.Properties.Resources.Super_Star, BrickBreaker.Properties.Resources.Double_Cherry, BrickBreaker.Properties.Resources.Super_Mushroom, BrickBreaker.Properties.Resources.Mini_Mushroom};
+        public static List<Block> blocks = new List<Block>();
+        public static List<PowerUp> powerUps = new List<PowerUp>();
+        public static Image[] powerUpImages = {BrickBreaker.Properties.Resources.Fire_Flower, BrickBreaker.Properties.Resources.Super_Star, BrickBreaker.Properties.Resources.Double_Cherry, BrickBreaker.Properties.Resources.Super_Mushroom, BrickBreaker.Properties.Resources.Mini_Mushroom};
 
 
         // Brushes
@@ -95,7 +96,7 @@ namespace BrickBreaker
 
             int newX, newY, newHp, newColour, newType;
 
-            XmlReader reader = XmlReader.Create("Resources/level2.xml");
+            XmlReader reader = XmlReader.Create("Resources/level1.xml");
 
             while (reader.Read())
             {
@@ -232,6 +233,25 @@ namespace BrickBreaker
                 }
             }
 
+            //check powerup collision with bottom
+            foreach (PowerUp p in powerUps)
+            {
+                if (p.BottomCollision(this))
+                {
+                    powerUps.Remove(p);
+                    break;
+                }
+            }
+
+            //check powerup collision with paddle
+            foreach (PowerUp p in powerUps)
+            {
+                if (p.PaddleCollision(paddle))
+                {
+                    ActivatePowerUp(p);
+                }
+            }
+
             //redraw the screen
             Refresh();
         }
@@ -316,37 +336,61 @@ namespace BrickBreaker
             int speed = 4;
             int type = randGen.Next(1, 5);
 
+            //create powerup object and spawn it on powerup block's x and y
             PowerUp p = new PowerUp(x, y, size, speed, type);
 
             powerUps.Add(p);
         }
+        
         public void FireFlower()
         {
             
         }
-        public void SuperMushroom()
-        {
-            counter++;
-        }
-        public void OneUpMuschroom()
-        {
-
-        }
-        public void MiniMuschroom()
-        {
-
-        }
+        
         public void SuperStar()
         {
 
         }
+        
         public void DoubleCherry()
         {
 
         }
-        public void  Coin()
+        
+        public void SuperMushroom()
+        {
+            counter++;
+        }
+        
+        public void MiniMuschroom()
         {
 
+        }
+     
+        public void ActivatePowerUp(PowerUp p)
+        {
+            if (p.type == 1)
+            {
+                
+            }
+            else if (p.type == 2)
+            {
+                
+            }
+            else if (p.type == 3)
+            {
+
+            }
+            else if (p.type == 4)
+            {
+                
+            }
+            else if (p.type == 5)
+            {
+
+            }
+
+            powerUps.Remove(p);
         }
     }
 }

@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace BrickBreaker
 {
-    class PowerUp
+    public class PowerUp
     {
         public int x, y, size, speed, type;
 
@@ -23,10 +24,34 @@ namespace BrickBreaker
         }
 
         public void Move()
-        {           
-            y = y + speed;         
+        {
+            y = y + speed;
+        }
+
+        public bool BottomCollision(UserControl UC)
+        {
+            Boolean didCollide = false;
+
+            if (y >= UC.Height)
+            {
+                didCollide = true;
+            }
+            return didCollide;
+        }
+
+        public bool PaddleCollision(Paddle p)
+        {
+            Boolean didCollide = false;
+            Rectangle powerUpRec = new Rectangle(x, y, size, size);
+            Rectangle paddleRec = new Rectangle(p.x, p.y, p.width, p.height);
+
+            if (powerUpRec.IntersectsWith(paddleRec))
+            {
+                didCollide = true;
+            }
+            return didCollide;
         }
     }
 }
-  
+
 
