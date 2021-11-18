@@ -58,7 +58,11 @@ namespace BrickBreaker
 
         int ballX, ballY, xSpeed, ySpeed, ballSize;
 
-        int counter = 0;
+        //powerup counters
+        int superMushCounter = 0;
+
+        //powerup activated or not
+        bool powerActive = false;
         #endregion
 
         public GameScreen()
@@ -168,6 +172,17 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            //check if powerups should end
+            if (powerActive == true)
+            {
+                superMushCounter++;
+                if (superMushCounter == 20)
+                {
+                    //if counter reaches limit, reset powered up values to originals
+                    paddle.width = 80;
+                    superMushCounter = 0;
+                }
+            }
             // Move the paddle
             if (leftArrowDown && paddle.x > 0)
             {
@@ -368,13 +383,7 @@ namespace BrickBreaker
 
         public void SuperMushroom()
         {
-            counter++;
-            paddle.x = 120;
-            if (counter == 20)
-            {
-                paddle.x = 100;
-                counter = 0;
-            }
+            paddle.width = 250;
         }
 
         public void MiniMuschroom()
@@ -386,7 +395,7 @@ namespace BrickBreaker
         {
             if (p.type == 1)
             {
-    
+                
             }
             else if (p.type == 2)
             {
@@ -394,10 +403,12 @@ namespace BrickBreaker
             }
             else if (p.type == 3)
             {
-   
+            
             }
             else if (p.type == 4)
             {
+                superMushCounter = 0;
+                powerActive = true;
                 SuperMushroom();
             }
             else if (p.type == 5)
