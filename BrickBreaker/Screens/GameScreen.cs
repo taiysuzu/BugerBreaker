@@ -39,7 +39,7 @@ namespace BrickBreaker
 
         //image arrays
         public static Image[] powerUpImages = { BrickBreaker.Properties.Resources.Fire_Flower, BrickBreaker.Properties.Resources.Super_Star, BrickBreaker.Properties.Resources.Double_Cherry, BrickBreaker.Properties.Resources.Super_Mushroom, BrickBreaker.Properties.Resources.Mini_Mushroom };
-        public static Image[] brickImages = {BrickBreaker.Properties.Resources.Brick_1hp, BrickBreaker.Properties.Resources.Brick_2hp, BrickBreaker.Properties.Resources.Brick_3hp, BrickBreaker.Properties.Resources.Brick_4hp, BrickBreaker.Properties.Resources.Brick_5hp };
+        public static Image[] brickImages = { BrickBreaker.Properties.Resources.Brick_1hp, BrickBreaker.Properties.Resources.Brick_2hp, BrickBreaker.Properties.Resources.Brick_3hp, BrickBreaker.Properties.Resources.Brick_4hp, BrickBreaker.Properties.Resources.Brick_5hp };
 
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
@@ -89,7 +89,7 @@ namespace BrickBreaker
             paddleY = (this.Height - paddleHeight) - 60;
             paddleSpeed = 8;
             paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, paddleSpeed, Color.White);
-            
+
             // setup starting ball values
             ballX = this.Width / 2 - 10;
             ballY = this.Height - paddle.height - 80;
@@ -115,7 +115,7 @@ namespace BrickBreaker
             {
                 if (reader.NodeType == XmlNodeType.Text)
                 {
-                    
+
                     newX = Convert.ToInt32(reader.ReadString());
 
                     reader.ReadToNextSibling("y");
@@ -141,59 +141,59 @@ namespace BrickBreaker
             gameTimer.Enabled = true;
         }
 
-        public void ResetBall();
+        public void ResetBall()
         {
-            int xSpeed = 0;
-        int ySpeed = 0;
+            xSpeed = 0;
+            ySpeed = 0;
 
             if (spacebarDown == true)
-             {
-                int xSpeed = 6;
-        int ySpeed = 6;
-        int ballSize = 20;
-        ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
-    }
+            {
+                xSpeed = 6;
+                ySpeed = 6;
+                ballSize = 20;
+                ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
+            }
 
 
-}
+        }
 
-private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
-{
-    //player 1 button presses
-    switch (e.KeyCode)
-    {
-        case Keys.Left:
-            leftArrowDown = true;
-            break;
-        case Keys.Right:
-            rightArrowDown = true;
-            break;
-        case Keys.Right:
-            spacebarDown = true;
-            break;
-        default:
-            break;
-    }
-}
+        private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            //player 1 button presses
+            switch (e.KeyCode)
+            {
+                case Keys.Left:
+                    leftArrowDown = true;
+                    break;
+                case Keys.Right:
+                    rightArrowDown = true;
+                    break;
+                case Keys.Space:
+                    spacebarDown = true;
+                    break;
+                default:
+                    break;
+            }
+        }
 
-private void GameScreen_KeyUp(object sender, KeyEventArgs e)
-{
-    //player 1 button releases
-    switch (e.KeyCode)
-    {
-        case Keys.Left:
-            leftArrowDown = false;
-            break;
-        case Keys.Right:
-            rightArrowDown = false;
-            break;
-        case Keys.Right:
-            spacebarDown = false;
-            break;
-        default:
-            break;
-    }
-}
+        private void GameScreen_KeyUp(object sender, KeyEventArgs e)
+        {
+            //player 1 button releases
+            switch (e.KeyCode)
+            {
+                case Keys.Left:
+                    leftArrowDown = false;
+                    break;
+                case Keys.Right:
+                    rightArrowDown = false;
+                    break;
+                case Keys.Space:
+                    spacebarDown = false;
+                    break;
+                default:
+                    break;
+            }
+        }
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
@@ -210,27 +210,27 @@ private void GameScreen_KeyUp(object sender, KeyEventArgs e)
             // Move ball
             ball.Move();
 
-    // Check for collision with top and side walls
-    ball.WallCollision(this);
+            // Check for collision with top and side walls
+            ball.WallCollision(this);
 
-    // Check for ball hitting bottom of screen
-    if (ball.BottomCollision(this))
-    {
-        lives--;
+            // Check for ball hitting bottom of screen
+            if (ball.BottomCollision(this))
+            {
+                lives--;
 
-        // Moves the ball back to origin
-        ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
-        ball.y = (this.Height - paddle.height) - 85;
+                // Moves the ball back to origin
+                ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
+                ball.y = (this.Height - paddle.height) - 85;
 
-        if (lives == 0)
-        {
-            gameTimer.Enabled = false;
-            OnEnd();
-        }
-    }
+                if (lives == 0)
+                {
+                    gameTimer.Enabled = false;
+                    OnEnd();
+                }
+            }
 
-    // Check for collision of ball with paddle, (incl. paddle movement)
-    ball.PaddleCollision(paddle);
+            // Check for collision of ball with paddle, (incl. paddle movement)
+            ball.PaddleCollision(paddle);
 
             // Check if ball has collided with any blocks
             foreach (Block b in blocks)
@@ -239,15 +239,15 @@ private void GameScreen_KeyUp(object sender, KeyEventArgs e)
                 {
                     blocks.Remove(b);
 
-            if (blocks.Count == 0)
-            {
-                gameTimer.Enabled = false;
-                OnEnd();
-            }
+                    if (blocks.Count == 0)
+                    {
+                        gameTimer.Enabled = false;
+                        OnEnd();
+                    }
 
-            break;
-        }
-    }
+                    break;
+                }
+            }
 
             //redraw the screen
             Refresh();
@@ -257,7 +257,7 @@ private void GameScreen_KeyUp(object sender, KeyEventArgs e)
         {
             // Goes to the game over screen
             Form form = this.FindForm();
-            
+
             GameOverScreen gos = new GameOverScreen();
             gos.Location = new Point((form.Width - gos.Width) / 2, (form.Height - gos.Height) / 2);
 
@@ -273,12 +273,12 @@ private void GameScreen_KeyUp(object sender, KeyEventArgs e)
         private void label17_Click(object sender, EventArgs e)
         {
 
-}
+        }
 
         private void label36_Click(object sender, EventArgs e)
         {
 
-}
+        }
 
         public void GameScreen_Paint(object sender, PaintEventArgs e)
         {
