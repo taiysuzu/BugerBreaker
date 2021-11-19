@@ -32,9 +32,15 @@ namespace BrickBreaker
             Rectangle blockRec = new Rectangle(b.x, b.y, b.width, b.height);
             Rectangle ballRec = new Rectangle(x, y, size, size);
 
-            if (ballRec.IntersectsWith(blockRec))
+            if (ballRec.IntersectsWith(blockRec))//todo - checking which side collides with ball
             {
-                ySpeed *= -1;
+                Rectangle bottomRec = new Rectangle(b.x, b.y + b.height, b.width, 1);
+                //Rectangle topRec = new Rectangle()
+
+                if (ballRec.IntersectsWith(bottomRec))// || ballRec.IntersectsWith(topRec))
+                {
+                    ySpeed *= -1;
+                }
             }
 
             return blockRec.IntersectsWith(ballRec);
@@ -47,7 +53,7 @@ namespace BrickBreaker
 
             if (ballRec.IntersectsWith(paddleRec))
             {
-                if (p.x + p.width/2 < x )
+                if (p.x + p.width / 2 < x)
                 {
                     xSpeed = 4;
                 }
