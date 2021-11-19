@@ -30,9 +30,7 @@ namespace BrickBreaker
         private void InitializeComponent()
         {
             this.howtolabel = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,14 +45,6 @@ namespace BrickBreaker
             this.howtolabel.TabIndex = 0;
             this.howtolabel.Text = "Arrow Keys (←→) To Move!\r\n\r\nDont Let the Ball Touch the Ground!\r\n\r\nYou Have 3 Liv" +
     "es!\r\n";
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(474, 177);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 50);
-            this.pictureBox1.TabIndex = 1;
-            this.pictureBox1.TabStop = false;
             // 
             // pictureBox2
             // 
@@ -75,10 +65,8 @@ namespace BrickBreaker
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.Controls.Add(this.howtolabel);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
             this.Name = "HowtoPlayScreen";
             this.Size = new System.Drawing.Size(854, 542);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
@@ -87,7 +75,6 @@ namespace BrickBreaker
         #endregion
 
         private System.Windows.Forms.Label howtolabel;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
