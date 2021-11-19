@@ -44,5 +44,31 @@ namespace BrickBreaker
 
             hs.Location = new Point((form.Width - hs.Width) / 2, (form.Height - hs.Height) / 2);
         }
+
+        private void playButton_MouseEnter(object sender, EventArgs e)
+        {
+            playButton.ForeColor = Color.Lime;     
+        }
+        private void playButton_MouseLeave(object sender, EventArgs e)
+        {
+            playButton.ForeColor = Color.White;
+        }
+        private void instructionsButton_MouseEnter(object sender, EventArgs e)
+        {
+            instructionsButton.ForeColor = Color.Yellow;
+        }
+        private void instructionsButton_MouseLeave(object sender, EventArgs e)
+        {
+            instructionsButton.ForeColor = Color.White;
+        }
+        private void exitButton_MouseEnter(object sender, EventArgs e)
+        {
+            exitButton.ForeColor = Color.Red;
+        }
+
+        private void exitButton_MouseLeave(object sender, EventArgs e)
+        {
+            exitButton.ForeColor = Color.White;
+        }
     }
 }

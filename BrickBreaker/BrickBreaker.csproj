@@ -72,6 +72,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="HowtoPlayScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="HowtoPlayScreen.Designer.cs">
+      <DependentUpon>HowtoPlayScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screens\GameOverScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -108,6 +114,9 @@
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HowtoPlayScreen.resx">
+      <DependentUpon>HowtoPlayScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -162,6 +171,11 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Resources\realbubble.png" />
+    <None Include="Resources\rer.png" />
+    <None Include="Resources\textbubble.png" />
+    <None Include="Resources\MarioStand.png" />
+    <None Include="Resources\mainbackground.png" />
     <None Include="Resources\Super Star.png" />
     <None Include="Resources\Mega Mushroom.png" />
     <None Include="Resources\Mini Mushroom.png" />
@@ -174,10 +188,13 @@
     <None Include="Resources\1-UpMushroom.png" />
     <None Include="Resources\Fire flower.png" />
     <None Include="Resources\fire.png" />
+    <None Include="Resources\bubble.png" />
     <Content Include="Resources\highscores.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Resources\Ice Flower.png" />
+    <None Include="Resources\LebronJames.png" />
+    <None Include="Resources\howtoplay.jpg" />
     <Content Include="Resources\level3.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
