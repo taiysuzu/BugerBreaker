@@ -324,21 +324,24 @@ namespace BrickBreaker
             {
                 if (b.colour == 1)
                 {
-                    e.Graphics.FillRectangle(blockBrush, b.x, b.y, b.width, b.height);
+                    e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Brick_1hp, b.x, b.y, b.width, b.height);
                 }
                 else if (b.colour == 2)
                 {
-                    e.Graphics.FillRectangle(blockBrush2, b.x, b.y, b.width, b.height);
+                    e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Brick_2hp, b.x, b.y, b.width, b.height);
                 }
                 else if (b.colour == 3)
                 {
-                    e.Graphics.FillRectangle(blockBrush3, b.x, b.y, b.width, b.height);
+                    e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Brick_3hp, b.x, b.y, b.width, b.height);
                 }
                 else if (b.colour == 4)
                 {
-                    e.Graphics.FillRectangle(blockBrush4, b.x, b.y, b.width, b.height);
+                    e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Brick_4hp, b.x, b.y, b.width, b.height);
                 }
-
+                else if (b.colour == 5)
+                {
+                    e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Brick_5hp, b.x, b.y, b.width, b.height);
+                }
             }
 
             //draws powerups
