@@ -18,11 +18,12 @@ namespace BrickBreaker
 {
     public partial class GameScreen : UserControl
     {
-
+        //todo - create ball list and change the way the ball works, add balls for powerup
+        //todo - create spawnBall method
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
-        Boolean leftArrowDown, rightArrowDown;
+        Boolean leftArrowDown, rightArrowDown, spacebarDown;
 
         // Game values
         int lives;
@@ -35,7 +36,10 @@ namespace BrickBreaker
         // list of all blocks for current level
         public static List<Block> blocks = new List<Block>();
         public static List<PowerUp> powerUps = new List<PowerUp>();
+
+        //image arrays
         public static Image[] powerUpImages = { BrickBreaker.Properties.Resources.Fire_Flower, BrickBreaker.Properties.Resources.Super_Star, BrickBreaker.Properties.Resources.Double_Cherry, BrickBreaker.Properties.Resources.Super_Mushroom, BrickBreaker.Properties.Resources.Mini_Mushroom };
+        public static Image[] brickImages = { BrickBreaker.Properties.Resources.Brick_1hp, BrickBreaker.Properties.Resources.Brick_2hp, BrickBreaker.Properties.Resources.Brick_3hp, BrickBreaker.Properties.Resources.Brick_4hp, BrickBreaker.Properties.Resources.Brick_5hp };
 
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
@@ -85,7 +89,7 @@ namespace BrickBreaker
             paddleY = (this.Height - paddleHeight) - 60;
             paddleSpeed = 8;
             paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, paddleSpeed, Color.White);
-            
+
             // setup starting ball values
             ballX = this.Width / 2 - 10;
             ballY = this.Height - paddle.height - 80;
@@ -111,7 +115,7 @@ namespace BrickBreaker
             {
                 if (reader.NodeType == XmlNodeType.Text)
                 {
-                    
+
                     newX = Convert.ToInt32(reader.ReadString());
 
                     reader.ReadToNextSibling("y");
@@ -137,6 +141,22 @@ namespace BrickBreaker
             gameTimer.Enabled = true;
         }
 
+        public void ResetBall()
+        {
+            xSpeed = 0;
+            ySpeed = 0;
+
+            if (spacebarDown == true)
+            {
+                xSpeed = 6;
+                ySpeed = 6;
+                ballSize = 20;
+                ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
+            }
+
+
+        }
+
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
             //player 1 button presses
@@ -147,6 +167,9 @@ namespace BrickBreaker
                     break;
                 case Keys.Right:
                     rightArrowDown = true;
+                    break;
+                case Keys.Space:
+                    spacebarDown = true;
                     break;
                 default:
                     break;
@@ -164,6 +187,9 @@ namespace BrickBreaker
                 case Keys.Right:
                     rightArrowDown = false;
                     break;
+                case Keys.Space:
+                    spacebarDown = false;
+                    break;
                 default:
                     break;
             }
@@ -171,39 +197,6 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-            //check if any powerups are active
-            if (powerActive == true)
-            {//check which powerups are active
-                if (fireActive == true)
-                {
-
-                }
-                else if (starActive == true)
-                {
-
-                }
-                else if (cherryActive == true)
-                {
-
-                }
-                else if (superMushActive == true)
-                {
-                    superMushCounter++;
-                    if (superMushCounter == 20)
-                    {
-                        paddle.width = 80;
-                        superMushActive = false;
-                    }
-                }
-                else if (miniMushActive == true)
-                {
-
-                }
-                else if (fireActive && starActive && cherryActive && superMushActive && miniMushActive == false)
-                {
-                    powerActive = false;
-                }
-            }
             // Move the paddle
             if (leftArrowDown && paddle.x > 0)
             {
@@ -212,12 +205,6 @@ namespace BrickBreaker
             if (rightArrowDown && paddle.x < (this.Width - paddle.width))
             {
                 paddle.Move("right");
-            }
-
-            //move powerups
-            foreach (PowerUp p in powerUps)
-            {
-                p.Move();
             }
 
             // Move ball
@@ -248,23 +235,9 @@ namespace BrickBreaker
             // Check if ball has collided with any blocks
             foreach (Block b in blocks)
             {
-
                 if (ball.BlockCollision(b))
                 {
-                    b.hp--;
-                    score++;
-
-                    b.colour = b.hp;
-
-                    if (b.type == 0)
-                    {
-                        SpawnPowerUp(b.x, b.y);
-                    }
-
-                    if (b.hp == 0)
-                    {
-                        blocks.Remove(b);
-                    }
+                    blocks.Remove(b);
 
                     if (blocks.Count == 0)
                     {
@@ -272,26 +245,6 @@ namespace BrickBreaker
                         OnEnd();
                     }
 
-                    break;
-                }
-            }
-
-            //check powerup collision with bottom
-            foreach (PowerUp p in powerUps)
-            {
-                if (p.BottomCollision(this))
-                {
-                    powerUps.Remove(p);
-                    break;
-                }
-            }
-
-            //check powerup collision with paddle
-            foreach (PowerUp p in powerUps)
-            {
-                if (p.PaddleCollision(paddle))
-                {
-                    ActivatePowerUp(p);
                     break;
                 }
             }
@@ -312,6 +265,21 @@ namespace BrickBreaker
             form.Controls.Remove(this);
         }
 
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label17_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label36_Click(object sender, EventArgs e)
+        {
+
+        }
+
         public void GameScreen_Paint(object sender, PaintEventArgs e)
         {
             // Draws paddle
@@ -321,128 +289,13 @@ namespace BrickBreaker
             // Draws blocks
             foreach (Block b in blocks)
             {
-                if (b.colour == 1)
-                {
-                    e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Brick_1hp, b.x, b.y, b.width, b.height);
-                }
-                else if (b.colour == 2)
-                {
-                    e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Brick_2hp, b.x, b.y, b.width, b.height);
-                }
-                else if (b.colour == 3)
-                {
-                    e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Brick_3hp, b.x, b.y, b.width, b.height);
-                }
-                else if (b.colour == 4)
-                {
-                    e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Brick_4hp, b.x, b.y, b.width, b.height);
-                }
-                else if (b.colour == 5)
-                {
-                    e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Brick_5hp, b.x, b.y, b.width, b.height);
-                }
-            }
-
-            //draws powerups
-            foreach (PowerUp p in powerUps)
-            {
-                if (p.type == 1)
-                {
-                    e.Graphics.DrawImage(powerUpImages[p.type - 1], p.x, p.y, p.size, p.size);
-                }
-                else if (p.type == 2)
-                {
-                    e.Graphics.DrawImage(powerUpImages[p.type - 1], p.x, p.y, p.size, p.size);
-                }
-                else if (p.type == 3)
-                {
-                    e.Graphics.DrawImage(powerUpImages[p.type - 1], p.x, p.y, p.size, p.size);
-                }
-                else if (p.type == 4)
-                {
-                    e.Graphics.DrawImage(powerUpImages[p.type - 1], p.x, p.y, p.size, p.size);
-                }
-                else if (p.type == 5)
-                {
-                    e.Graphics.DrawImage(powerUpImages[p.type - 1], p.x, p.y, p.size, p.size);
-                }
+                e.Graphics.FillRectangle(blockBrush, b.x, b.y, b.width, b.height);
             }
 
             // Draws ball
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
 
-            //draws life counter
-            e.Graphics.DrawString($"Lives left: {lives}", textFont, textBrush, 370, 490);
-
-            //draws score counter
-            e.Graphics.DrawString($"Score: {score}", textFont, textBrush, 370, 510);
-        }
-
-        public void SpawnPowerUp(int x, int y)
-        {
-            int size = 40;
-            int speed = 4;
-            int type = randGen.Next(1, 5);
-
-            //create powerup object and spawn it on powerup block's x and y
-            PowerUp p = new PowerUp(x, y, size, speed, type);
-
-            powerUps.Add(p);
-        }
-
-        public void FireFlower()
-        {
-
-        }
-
-        public void SuperStar()
-        {
-
-        }
-
-        public void DoubleCherry()
-        {
-
-        }
-
-        public void SuperMushroom()
-        {
-            superMushCounter = 0;
-            superMushActive = true;
-            powerActive = true;
-
-            paddle.width = 250;
-        }
-
-        public void MiniMushroom()
-        {
-
-        }
-
-        public void ActivatePowerUp(PowerUp p)
-        {
-            if (p.type == 1)
-            {
-                FireFlower();
-            }
-            else if (p.type == 2)
-            {
-                SuperStar();
-            }
-            else if (p.type == 3)
-            {
-                DoubleCherry();
-            }
-            else if (p.type == 4)
-            {
-                SuperMushroom();
-            }
-            else if (p.type == 5)
-            {
-                MiniMushroom();
-            }
-
-            powerUps.Remove(p);
+            e.Graphics.DrawString($"Lives left: {lives}", textFont, textBrush, 370, 500);
         }
     }
 }

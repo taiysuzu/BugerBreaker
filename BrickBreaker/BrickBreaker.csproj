@@ -165,6 +165,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Resources\question block.png" />
     <None Include="Resources\Super Star.png" />
     <None Include="Resources\Mega Mushroom.png" />
     <None Include="Resources\Mini Mushroom.png" />
@@ -177,11 +178,11 @@
     <None Include="Resources\1-UpMushroom.png" />
     <None Include="Resources\Fire flower.png" />
     <None Include="Resources\fire.png" />
+    <None Include="Resources\Brick5real.png" />
+    <None Include="Resources\Brick4real.png" />
     <None Include="Resources\Brick3real.png" />
     <None Include="Resources\Brick2real.png" />
     <None Include="Resources\Brick1.png" />
-    <None Include="Resources\Brick4real.png" />
-    <None Include="Resources\Brick5real.png" />
     <Content Include="Resources\highscores.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
