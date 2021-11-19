@@ -7,11 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
+using System.Threading;
+
 
 namespace BrickBreaker
 {
     public partial class GameOverScreen : UserControl
     {
+        SoundPlayer coin = new SoundPlayer(Properties.Resources._415083__harrietniamh__video_game_coin);
+
         public GameOverScreen()
         {
             InitializeComponent();
@@ -25,6 +30,11 @@ namespace BrickBreaker
         private void menuButton_Click(object sender, EventArgs e)
         {
             // Goes to the menu screen
+
+            coin.Play();
+
+            Thread.Sleep(200);
+
             MenuScreen ms = new MenuScreen();
             Form form = this.FindForm();
 

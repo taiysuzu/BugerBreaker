@@ -162,6 +162,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="Resources\question block.png" />
     <None Include="Resources\Super Star.png" />
     <None Include="Resources\Mega Mushroom.png" />
     <None Include="Resources\Mini Mushroom.png" />
