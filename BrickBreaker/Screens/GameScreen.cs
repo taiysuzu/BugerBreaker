@@ -424,15 +424,15 @@ namespace BrickBreaker
         {
             if (p.type == 1)
             {
-               
+                FireFlower();
             }
             else if (p.type == 2)
             {
-
+                SuperStar();
             }
             else if (p.type == 3)
             {
-
+                DoubleCherry();
             }
             else if (p.type == 4)
             {
