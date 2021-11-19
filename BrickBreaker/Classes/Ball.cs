@@ -47,7 +47,7 @@ namespace BrickBreaker
 
             if (ballRec.IntersectsWith(paddleRec))
             {
-                if (p.x + p.width/2 < x)
+                if (p.x + p.width / 2 < x)
                 {
                     xSpeed = 4;
                 }
