@@ -25,15 +25,15 @@
     <x>118</x>
     <y>135</y>
     <hp>1</hp>
-    <colour>1</colour>
-    <type>1</type>
+    <colour>4</colour>
+    <type>0</type>
   </brick>
   <brick>
     <x>149</x>
     <y>123</y>
     <hp>1</hp>
-    <colour>1</colour>
-    <type>1</type>
+    <colour>4</colour>
+    <type>0</type>
   </brick>
   <brick>
     <x>180</x>

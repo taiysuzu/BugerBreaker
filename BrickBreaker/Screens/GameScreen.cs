@@ -86,7 +86,7 @@ namespace BrickBreaker
             paddleY = (this.Height - paddleHeight) - 60;
             paddleSpeed = 8;
             paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, paddleSpeed, Color.White);
-
+            
             // setup starting ball values
             ballX = this.Width / 2 - 10;
             ballY = this.Height - paddle.height - 80;
@@ -436,7 +436,7 @@ namespace BrickBreaker
                 SuperMushroom();
             }
             else if (p.type == 5)
-            { 
+            {
                 MiniMushroom();
             }
 
