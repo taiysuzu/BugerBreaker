@@ -215,7 +215,6 @@ namespace BrickBreaker
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(38, 17);
             this.label4.TabIndex = 7;
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label5
             // 
@@ -1248,7 +1247,6 @@ namespace BrickBreaker
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "GameOverScreen";
             this.Size = new System.Drawing.Size(854, 542);
-            this.Load += new System.EventHandler(this.GameOverScreen_Load);
             this.ResumeLayout(false);
 
         }

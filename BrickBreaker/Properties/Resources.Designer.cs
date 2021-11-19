@@ -63,9 +63,9 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _1_UpMushroom {
+        internal static System.Drawing.Bitmap Brick_1hp {
             get {
-                object obj = ResourceManager.GetObject("_1_UpMushroom", resourceCulture);
+                object obj = ResourceManager.GetObject("Brick_1hp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -82,9 +82,9 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Cloud_Flower {
+        internal static System.Drawing.Bitmap Brick_2hp {
             get {
-                object obj = ResourceManager.GetObject("Cloud_Flower", resourceCulture);
+                object obj = ResourceManager.GetObject("Brick_2hp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -92,9 +92,29 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Coin {
+        internal static System.Drawing.Bitmap Brick_3hp {
             get {
-                object obj = ResourceManager.GetObject("Coin", resourceCulture);
+                object obj = ResourceManager.GetObject("Brick_3hp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Brick_4hp {
+            get {
+                object obj = ResourceManager.GetObject("Brick_4hp", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Brick_5hp {
+            get {
+                object obj = ResourceManager.GetObject("Brick_5hp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -112,9 +132,9 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Fire_flower {
+        internal static System.Drawing.Bitmap fire {
             get {
-                object obj = ResourceManager.GetObject("Fire_flower", resourceCulture);
+                object obj = ResourceManager.GetObject("fire", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -122,19 +142,9 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Ice_Flower {
+        internal static System.Drawing.Bitmap Fire_Flower {
             get {
-                object obj = ResourceManager.GetObject("Ice_Flower", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Mega_Mushroom {
-            get {
-                object obj = ResourceManager.GetObject("Mega_Mushroom", resourceCulture);
+                object obj = ResourceManager.GetObject("Fire_Flower", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -145,56 +155,6 @@ namespace BrickBreaker.Properties {
         internal static System.Drawing.Bitmap Mini_Mushroom {
             get {
                 object obj = ResourceManager.GetObject("Mini_Mushroom", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Poison_Mushroom {
-            get {
-                object obj = ResourceManager.GetObject("Poison_Mushroom", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Propeller_Mushroom {
-            get {
-                object obj = ResourceManager.GetObject("Propeller_Mushroom", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap questionBlock {
-            get {
-                object obj = ResourceManager.GetObject("questionBlock", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Spring_Mushroom {
-            get {
-                object obj = ResourceManager.GetObject("Spring_Mushroom", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap Super_Leaf {
-            get {
-                object obj = ResourceManager.GetObject("Super_Leaf", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

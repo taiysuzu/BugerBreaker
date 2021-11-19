@@ -44,14 +44,5 @@ namespace BrickBreaker
             ms.Location = new Point((form.Width - ms.Width) / 2, (form.Height - ms.Height) / 2);
         }
 
-        private void GameOverScreen_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
