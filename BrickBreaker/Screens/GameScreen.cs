@@ -58,7 +58,11 @@ namespace BrickBreaker
 
         int ballX, ballY, xSpeed, ySpeed, ballSize;
 
-        int counter = 0;
+        //powerup counters
+        int fireCounter, starCounter, cherryCounter, superMushCounter, miniMushCounter = 0;
+
+        //powerup activated or not
+        bool powerActive, fireActive, starActive, cherryActive, superMushActive, miniMushActive = false;
         #endregion
 
         public GameScreen()
@@ -168,7 +172,39 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-            counter++;
+            //check if any powerups are active
+            if (powerActive == true)
+            {//check which powerups are active
+                if (fireActive == true)
+                {
+
+                }
+                else if (starActive == true)
+                {
+
+                }
+                else if (cherryActive == true)
+                {
+
+                }
+                else if (superMushActive == true)
+                {
+                    superMushCounter++;
+                    if (superMushCounter == 20)
+                    {
+                        paddle.width = 80;
+                        superMushActive = false;
+                    }
+                }
+                else if (miniMushActive == true)
+                {
+
+                }
+                else if (fireActive && starActive && cherryActive && superMushActive && miniMushActive == false)
+                {
+                    powerActive = false;
+                }
+            }
             // Move the paddle
             if (leftArrowDown && paddle.x > 0)
             {
@@ -334,7 +370,10 @@ namespace BrickBreaker
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
 
             //draws life counter
-            e.Graphics.DrawString($"Lives left: {lives}", textFont, textBrush, 370, 500);
+            e.Graphics.DrawString($"Lives left: {lives}", textFont, textBrush, 370, 490);
+
+            //draws score counter
+            e.Graphics.DrawString($"Score: {score}", textFont, textBrush, 370, 510);
         }
 
         public void SpawnPowerUp(int x, int y)
@@ -366,15 +405,14 @@ namespace BrickBreaker
 
         public void SuperMushroom()
         {
+            superMushCounter = 0;
+            superMushActive = true;
+            powerActive = true;
+
             paddle.width = 250;
-            if (counter == 15)
-            {
-                paddle.width = 80;
-                counter = 0;
-            }
         }
 
-        public void MiniMuschroom()
+        public void MiniMushroom()
         {
 
         }
@@ -383,28 +421,23 @@ namespace BrickBreaker
         {
             if (p.type == 1)
             {
-                counter = 0;
-                SuperMushroom();
+               
             }
             else if (p.type == 2)
             {
-                counter = 0;
-                SuperMushroom();
+
             }
             else if (p.type == 3)
             {
-                counter = 0;
-                SuperMushroom();
+
             }
             else if (p.type == 4)
             {
-                counter = 0;
                 SuperMushroom();
             }
             else if (p.type == 5)
             {
-                counter = 0;
-                SuperMushroom();
+                MiniMushroom();
             }
 
             powerUps.Remove(p);
