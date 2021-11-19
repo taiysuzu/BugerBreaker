@@ -103,6 +103,16 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap rainbow_effect2 {
+            get {
+                object obj = ResourceManager.GetObject("rainbow_effect2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Super_Mushroom {
             get {
                 object obj = ResourceManager.GetObject("Super_Mushroom", resourceCulture);

@@ -82,6 +82,13 @@ namespace BrickBreaker
 
             return didCollide;
         }
+        public void StarCollision(UserControl UC)
+        {          
+            if (y > UC.Height - 30)
+            {
+                ySpeed *= -1;
+            }
+        }
 
     }
 }

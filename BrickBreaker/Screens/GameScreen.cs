@@ -36,7 +36,7 @@ namespace BrickBreaker
         public static List<Block> blocks = new List<Block>();
         public static List<PowerUp> powerUps = new List<PowerUp>();
         public static Image[] powerUpImages = { BrickBreaker.Properties.Resources.Fire_Flower, BrickBreaker.Properties.Resources.Super_Star, BrickBreaker.Properties.Resources.Double_Cherry, BrickBreaker.Properties.Resources.Super_Mushroom, BrickBreaker.Properties.Resources.Mini_Mushroom };
-
+        public static Image rainbow = BrickBreaker.Properties.Resources.rainbow_effect2;
 
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
@@ -63,6 +63,8 @@ namespace BrickBreaker
 
         //powerup activated or not
         bool powerActive, fireActive, starActive, cherryActive, superMushActive, miniMushActive = false;
+
+        Ball ball2;
         #endregion
 
         public GameScreen()
@@ -181,16 +183,69 @@ namespace BrickBreaker
                 }
                 else if (starActive == true)
                 {
-
+                    starCounter++;
+                    ball.StarCollision(this);
+                    if (starCounter == 1200)
+                    {
+                        starActive = false;
+                    }
                 }
                 else if (cherryActive == true)
                 {
+                    ball2.Move();
+                    ball2.WallCollision(this);
+                    ball2.PaddleCollision(paddle);
 
+                    if (ball2.BottomCollision(this))
+                    {
+                        lives--;
+
+                        // Moves the ball back to origin
+                        ball2.x = ((paddle.x - (ball2.size / 2)) + (paddle.width / 2));
+                        ball2.y = (this.Height - paddle.height) - 85;
+
+                        if (lives == 0)
+                        {
+                            gameTimer.Enabled = false;
+                            OnEnd();
+                        }
+                    }
+                  
+
+                    foreach (Block b in blocks)
+                    {
+
+                        if (ball2.BlockCollision(b))
+                        {
+                            b.hp--;
+                            score++;
+
+                            b.colour = b.hp;
+
+                            if (b.type == 0)
+                            {
+                                SpawnPowerUp(b.x, b.y);
+                            }
+
+                            if (b.hp == 0)
+                            {
+                                blocks.Remove(b);
+                            }
+
+                            if (blocks.Count == 0)
+                            {
+                                gameTimer.Enabled = false;
+                                OnEnd();
+                            }
+
+                            break;
+                        }
+                    }
                 }
                 else if (superMushActive == true)
                 {
                     superMushCounter++;
-                    if (superMushCounter == 20)
+                    if (superMushCounter == 1200)
                     {
                         paddle.width = 80;
                         superMushActive = false;
@@ -198,7 +253,12 @@ namespace BrickBreaker
                 }
                 else if (miniMushActive == true)
                 {
-
+                    miniMushCounter++;
+                    if (miniMushCounter == 1200)
+                    {
+                        paddle.width = 80;
+                        miniMushActive = false;
+                    }
                 }
                 else if (fireActive && starActive && cherryActive && superMushActive && miniMushActive == false)
                 {
@@ -369,18 +429,30 @@ namespace BrickBreaker
             // Draws ball
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
 
-            //draws life counter
+            if (cherryActive == true)
+            {
+                e.Graphics.FillRectangle(ballBrush, ball2.x, ball2.y, ball2.size, ball2.size);
+            }
+           
+            //Draws life counter
             e.Graphics.DrawString($"Lives left: {lives}", textFont, textBrush, 370, 490);
 
-            //draws score counter
+            //Draws score counter
             e.Graphics.DrawString($"Score: {score}", textFont, textBrush, 370, 510);
+
+            //Draw star rainbow effect
+            if (starActive == true)
+            {
+                e.Graphics.DrawImage(rainbow, 0, 658, 1068, 20);
+            }
+           
         }
 
         public void SpawnPowerUp(int x, int y)
         {
             int size = 40;
             int speed = 4;
-            int type = randGen.Next(1, 5);
+            int type = randGen.Next(1, 6);
 
             //create powerup object and spawn it on powerup block's x and y
             PowerUp p = new PowerUp(x, y, size, speed, type);
@@ -395,12 +467,18 @@ namespace BrickBreaker
 
         public void SuperStar()
         {
-
+            starCounter = 0;
+            starActive = true;
+            powerActive = true;
         }
 
         public void DoubleCherry()
         {
+            cherryCounter = 0;
+            cherryActive = true;
+            powerActive = true;
 
+            ball2 = new Ball(ballX, ballY, xSpeed * -1, ySpeed * -1, ballSize);
         }
 
         public void SuperMushroom()
@@ -414,22 +492,26 @@ namespace BrickBreaker
 
         public void MiniMushroom()
         {
+            miniMushCounter = 0;
+            miniMushActive = true;
+            powerActive = true;
 
+            paddle.width = 50;
         }
 
         public void ActivatePowerUp(PowerUp p)
         {
             if (p.type == 1)
             {
-               
+            //    FireFlower();
             }
             else if (p.type == 2)
             {
-
+                SuperStar();
             }
             else if (p.type == 3)
             {
-
+                DoubleCherry();
             }
             else if (p.type == 4)
             {
