@@ -35,8 +35,10 @@ namespace BrickBreaker
         // list of all blocks for current level
         public static List<Block> blocks = new List<Block>();
         public static List<PowerUp> powerUps = new List<PowerUp>();
-        public static Image[] powerUpImages = { BrickBreaker.Properties.Resources.Fire_Flower, BrickBreaker.Properties.Resources.Super_Star, BrickBreaker.Properties.Resources.Double_Cherry, BrickBreaker.Properties.Resources.Super_Mushroom, BrickBreaker.Properties.Resources.Mini_Mushroom };
 
+        //image arrays
+        public static Image[] powerUpImages = { BrickBreaker.Properties.Resources.Fire_Flower, BrickBreaker.Properties.Resources.Super_Star, BrickBreaker.Properties.Resources.Double_Cherry, BrickBreaker.Properties.Resources.Super_Mushroom, BrickBreaker.Properties.Resources.Mini_Mushroom };
+        public static Image[] brickImages = {BrickBreaker.Properties.Resources.Brick_1hp, BrickBreaker.Properties.Resources.Brick_2hp, BrickBreaker.Properties.Resources.Brick_3hp, BrickBreaker.Properties.Resources.Brick_4hp, BrickBreaker.Properties.Resources.Brick_5hp };
 
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
@@ -324,23 +326,23 @@ namespace BrickBreaker
             {
                 if (b.colour == 1)
                 {
-                    e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Brick_1hp, b.x, b.y, b.width, b.height);
+                    e.Graphics.DrawImage(brickImages[0], b.x, b.y, b.width, b.height);
                 }
                 else if (b.colour == 2)
                 {
-                    e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Brick_2hp, b.x, b.y, b.width, b.height);
+                    e.Graphics.DrawImage(brickImages[1], b.x, b.y, b.width, b.height);
                 }
                 else if (b.colour == 3)
                 {
-                    e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Brick_3hp, b.x, b.y, b.width, b.height);
+                    e.Graphics.DrawImage(brickImages[2], b.x, b.y, b.width, b.height);
                 }
                 else if (b.colour == 4)
                 {
-                    e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Brick_4hp, b.x, b.y, b.width, b.height);
+                    e.Graphics.DrawImage(brickImages[3], b.x, b.y, b.width, b.height);
                 }
                 else if (b.colour == 5)
                 {
-                    e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Brick_5hp, b.x, b.y, b.width, b.height);
+                    e.Graphics.DrawImage(brickImages[4], b.x, b.y, b.width, b.height);
                 }
             }
 
