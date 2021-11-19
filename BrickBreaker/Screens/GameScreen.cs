@@ -35,7 +35,7 @@ namespace BrickBreaker
         // list of all blocks for current level
         public static List<Block> blocks = new List<Block>();
         public static List<PowerUp> powerUps = new List<PowerUp>();
-        public static Image[] powerUpImages = {BrickBreaker.Properties.Resources.Fire_Flower, BrickBreaker.Properties.Resources.Super_Star, BrickBreaker.Properties.Resources.Double_Cherry, BrickBreaker.Properties.Resources.Super_Mushroom, BrickBreaker.Properties.Resources.Mini_Mushroom};
+        public static Image[] powerUpImages = { BrickBreaker.Properties.Resources.Fire_Flower, BrickBreaker.Properties.Resources.Super_Star, BrickBreaker.Properties.Resources.Double_Cherry, BrickBreaker.Properties.Resources.Super_Mushroom, BrickBreaker.Properties.Resources.Mini_Mushroom };
 
 
         // Brushes
@@ -50,8 +50,19 @@ namespace BrickBreaker
         //font for text
         Font textFont = new Font("Arial", 16);
 
+        //random generator
         public static Random randGen = new Random();
 
+        //global paddle and ball values
+        int paddleWidth, paddleHeight, paddleX, paddleY, paddleSpeed;
+
+        int ballX, ballY, xSpeed, ySpeed, ballSize;
+
+        //powerup counters
+        int fireCounter, starCounter, cherryCounter, superMushCounter, miniMushCounter = 0;
+
+        //powerup activated or not
+        bool powerActive, fireActive, starActive, cherryActive, superMushActive, miniMushActive = false;
         #endregion
 
         public GameScreen()
@@ -59,7 +70,6 @@ namespace BrickBreaker
             InitializeComponent();
             OnStart();
         }
-
 
         public void OnStart()
         {
@@ -70,25 +80,26 @@ namespace BrickBreaker
             leftArrowDown = rightArrowDown = false;
 
             // setup starting paddle values and create paddle object
-            int paddleWidth = 80;
-            int paddleHeight = 20;
-            int paddleX = ((this.Width / 2) - (paddleWidth / 2));
-            int paddleY = (this.Height - paddleHeight) - 60;
-            int paddleSpeed = 8;
+            paddleWidth = 80;
+            paddleHeight = 20;
+            paddleX = ((this.Width / 2) - (paddleWidth / 2));
+            paddleY = (this.Height - paddleHeight) - 60;
+            paddleSpeed = 8;
             paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, paddleSpeed, Color.White);
-
+            
             // setup starting ball values
-            int ballX = this.Width / 2 - 10;
-            int ballY = this.Height - paddle.height - 80;
+            ballX = this.Width / 2 - 10;
+            ballY = this.Height - paddle.height - 80;
 
             // Creates a new ball
-            int xSpeed = 6;
-            int ySpeed = 6;
-            int ballSize = 20;
+            xSpeed = 5;
+            ySpeed = 5;
+            ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
-            #region Creates blocks for generic level. Need to replace with code that loads levels.
+            #region Temporary code that loads levels.
 
+            //TODO: load level screen
             //clears screen and loads level 1
 
             blocks.Clear();
@@ -161,6 +172,39 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            //check if any powerups are active
+            if (powerActive == true)
+            {//check which powerups are active
+                if (fireActive == true)
+                {
+
+                }
+                else if (starActive == true)
+                {
+
+                }
+                else if (cherryActive == true)
+                {
+
+                }
+                else if (superMushActive == true)
+                {
+                    superMushCounter++;
+                    if (superMushCounter == 20)
+                    {
+                        paddle.width = 80;
+                        superMushActive = false;
+                    }
+                }
+                else if (miniMushActive == true)
+                {
+
+                }
+                else if (fireActive && starActive && cherryActive && superMushActive && miniMushActive == false)
+                {
+                    powerActive = false;
+                }
+            }
             // Move the paddle
             if (leftArrowDown && paddle.x > 0)
             {
@@ -209,6 +253,7 @@ namespace BrickBreaker
                 if (ball.BlockCollision(b))
                 {
                     b.hp--;
+                    score++;
 
                     b.colour = b.hp;
 
@@ -248,6 +293,7 @@ namespace BrickBreaker
                 if (p.PaddleCollision(paddle))
                 {
                     ActivatePowerUp(p);
+                    break;
                 }
             }
 
@@ -278,21 +324,24 @@ namespace BrickBreaker
             {
                 if (b.colour == 1)
                 {
-                    e.Graphics.FillRectangle(blockBrush, b.x, b.y, b.width, b.height);
+                    e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Brick_1hp, b.x, b.y, b.width, b.height);
                 }
                 else if (b.colour == 2)
                 {
-                    e.Graphics.FillRectangle(blockBrush2, b.x, b.y, b.width, b.height);
+                    e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Brick_2hp, b.x, b.y, b.width, b.height);
                 }
                 else if (b.colour == 3)
                 {
-                    e.Graphics.FillRectangle(blockBrush3, b.x, b.y, b.width, b.height);
+                    e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Brick_3hp, b.x, b.y, b.width, b.height);
                 }
                 else if (b.colour == 4)
                 {
-                    e.Graphics.FillRectangle(blockBrush4, b.x, b.y, b.width, b.height);
+                    e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Brick_4hp, b.x, b.y, b.width, b.height);
                 }
-
+                else if (b.colour == 5)
+                {
+                    e.Graphics.DrawImage(BrickBreaker.Properties.Resources.Brick_5hp, b.x, b.y, b.width, b.height);
+                }
             }
 
             //draws powerups
@@ -324,13 +373,16 @@ namespace BrickBreaker
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
 
             //draws life counter
-            e.Graphics.DrawString($"Lives left: {lives}", textFont, textBrush, 370, 500);
+            e.Graphics.DrawString($"Lives left: {lives}", textFont, textBrush, 370, 490);
+
+            //draws score counter
+            e.Graphics.DrawString($"Score: {score}", textFont, textBrush, 370, 510);
         }
 
         public void SpawnPowerUp(int x, int y)
         {
             int size = 40;
-            int speed = 3;
+            int speed = 4;
             int type = randGen.Next(1, 5);
 
             //create powerup object and spawn it on powerup block's x and y
@@ -339,27 +391,56 @@ namespace BrickBreaker
             powerUps.Add(p);
         }
 
+        public void FireFlower()
+        {
+
+        }
+
+        public void SuperStar()
+        {
+
+        }
+
+        public void DoubleCherry()
+        {
+
+        }
+
+        public void SuperMushroom()
+        {
+            superMushCounter = 0;
+            superMushActive = true;
+            powerActive = true;
+
+            paddle.width = 250;
+        }
+
+        public void MiniMushroom()
+        {
+
+        }
+
         public void ActivatePowerUp(PowerUp p)
         {
             if (p.type == 1)
             {
-                
+                FireFlower();
             }
             else if (p.type == 2)
             {
-                
+                SuperStar();
             }
             else if (p.type == 3)
             {
-
+                DoubleCherry();
             }
             else if (p.type == 4)
             {
-                
+                SuperMushroom();
             }
             else if (p.type == 5)
             {
-
+                MiniMushroom();
             }
 
             powerUps.Remove(p);
