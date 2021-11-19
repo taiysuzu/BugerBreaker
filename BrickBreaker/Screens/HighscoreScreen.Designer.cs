@@ -50,6 +50,7 @@ namespace BrickBreaker.Screens
             this.DoubleBuffered = true;
             this.Name = "HighscoreScreen";
             this.Size = new System.Drawing.Size(854, 542);
+            this.Load += new System.EventHandler(this.HighscoreScreen_Load);
             this.ResumeLayout(false);
 
         }

@@ -17,5 +17,10 @@ namespace BrickBreaker.Screens
         {
             InitializeComponent();
         }
+
+        private void HighscoreScreen_Load(object sender, EventArgs e)
+        {
+           
+        }
     }
 }
