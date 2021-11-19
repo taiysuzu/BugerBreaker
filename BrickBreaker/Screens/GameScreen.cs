@@ -36,7 +36,6 @@ namespace BrickBreaker
         public static List<Block> blocks = new List<Block>();
         public static List<PowerUp> powerUps = new List<PowerUp>();
         public static Image[] powerUpImages = { BrickBreaker.Properties.Resources.Fire_Flower, BrickBreaker.Properties.Resources.Super_Star, BrickBreaker.Properties.Resources.Double_Cherry, BrickBreaker.Properties.Resources.Super_Mushroom, BrickBreaker.Properties.Resources.Mini_Mushroom };
-        List<HighscoreScreen> playerScores= new List<HighscoreScreen>();
 
         // Brushes
         SolidBrush paddleBrush = new SolidBrush(Color.White);
@@ -311,13 +310,6 @@ namespace BrickBreaker
 
             form.Controls.Add(gos);
             form.Controls.Remove(this);
-
-            int highscore;
-
-            highscore = score;
-
-            HighscoreScreen h = new HighscoreScreen(highscore);
-            playerScores.Add(h);
         }
 
         public void GameScreen_Paint(object sender, PaintEventArgs e)
